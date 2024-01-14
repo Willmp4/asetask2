@@ -10,6 +10,15 @@
             "password": "a",
             "client_id": "2e582f49-adc8-4648-a0c3-a4fee18ee2fb",
             "company_name": "a"
+        },
+        {
+            "user_id": "69294962-5003-44b6-a6c5-076a205eb6ae",
+            "name": "admin",
+            "role": "client",
+            "email": "admin",
+            "password": "admin",
+            "client_id": "69294962-5003-44b6-a6c5-076a205eb6ae",
+            "company_name": "admin"
         }
     ],
     "biographies": []
