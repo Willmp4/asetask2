@@ -4,6 +4,7 @@ class Document:
         self.document_id = document_id
         self.title = title
         self.content = content
+        
         self.project_id = project_id
         self.upload_date = upload_date
 
