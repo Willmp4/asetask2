@@ -27,7 +27,7 @@ def create_user(database, user_type):
         role = input("Enter role: ")
         user = Employee.create_user(employee_id, name, role, email, password, biography, skills, experience)
         database['employees'].append(user)
-        database['biographies'].append(Biography(employee_id, name, biography, None, None))
+        database['biographies'].append(Biography(str(uuid.uuid4), name, biography, employee_id, None, None))
 
     elif user_type == 'client':
         client_id = str(uuid.uuid4())
@@ -36,7 +36,6 @@ def create_user(database, user_type):
         database['clients'].append(user)
 
     save_to_json(database)
-
 
 
 def employee_actions(kms, user):
