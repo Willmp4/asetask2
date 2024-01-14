@@ -1,0 +1,16 @@
+{
+    "users": [],
+    "employees": [],
+    "clients": [
+        {
+            "user_id": "2e582f49-adc8-4648-a0c3-a4fee18ee2fb",
+            "name": "a",
+            "role": "client",
+            "email": "a",
+            "password": "a",
+            "client_id": "2e582f49-adc8-4648-a0c3-a4fee18ee2fb",
+            "company_name": "a"
+        }
+    ],
+    "biographies": []
+}
