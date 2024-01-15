@@ -1,11 +1,10 @@
 
 class Document:
-    def init(self, document_id, title, content, project_id, upload_date):
+    def init(self, document_id, title, content, biography, upload_date):
         self.document_id = document_id
         self.title = title
         self.content = content
-        
-        self.project_id = project_id
+        self.biography = biography
         self.upload_date = upload_date
 
     def upload(self, db):

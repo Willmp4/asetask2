@@ -1,43 +1,41 @@
 
 from User import User
+from Biography import Biography
+import uuid
 
 class Employee(User):
-    
-    def __init__(self, employee_id, name, role, email, password, biography, skills, experience):
-        super().__init__(employee_id, name, role, email, password)
-        self.employee_id = employee_id
-        self.biography = biography
+    def __init__(self, user_id, name, role, email, password, biography_description, skills, experience):
+        super().__init__(user_id, name, role, email, password)
+        self.biography = Biography(str(uuid.uuid4()), name, biography_description, user_id, None, None)
         self.skills = skills
         self.experience = experience
+    
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'name': self.name,
+            'role': self.role,
+            'email': self.email,
+            'password': self.password,
+            'biography': self.biography.to_dict(),
+            'skills': self.skills,
+            'experience': self.experience
+        }
 
     @staticmethod
-    def create_user(employee_id, name, role, email, password, biography, skills, experience):
-        return Employee(employee_id, name, role, email, password, biography, skills, experience)
+    def create_user(user_id, name, role, email, password, biography_description, skills, experience):
+        return Employee(user_id, name, role, email, password, biography_description, skills, experience)
 
-
-    def update_biography(self, biography):
-        self.biography = biography
-        print("Employee biography updated")
-
-    def search_project(self, project_id):
-        # This would interface with a project management component
-        print("Searching for project")
-        return "Project details for project_id: {}".format(project_id)
 
 class Client(User):
 
-    def __init__(self, client_id, name, email, password, company_name, role="client"):
-        super().__init__(client_id, name, role, email, password)
-        self.client_id = client_id
+    def __init__(self, user_id, name, email, password, company_name, role="client"):
+        super().__init__(user_id, name, role, email, password)
         self.company_name = company_name
 
 
     @staticmethod
-    def create_user( client_id, name, email, password, company_name, ):
-        return Client( client_id, name, email, password, company_name)
-
-    def view_employee_biography(self, employee):
-        print(f"Viewing biography for {employee.name}")
-
+    def create_user( user_id, name, email, password, company_name, ):
+        return Client( user_id, name, email, password, company_name)
 
 
