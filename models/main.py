@@ -29,50 +29,57 @@ def create_user(user_manager, user_type):
 
     user_manager.add_user(user)
 
-def employee_actions(kms, user):
+def client_actions(user_manager, user):
     while True:
-        print("\n1. Update Profile\n2. Manage Biographies\n3. Logout")
+        print("\n1. View Employee Biographies\n2. Edit Account\n3. Logout")
         choice = input("Enter your choice: ")
         if choice == '1':
-            name = input("Enter name: ")
-            email = input("Enter email: ")
-            password = input("Enter password: ")
-            kms.update_user_profile(user.user_id, name, email, password)
+            employees = [u for u in user_manager.users.values() if isinstance(u, Employee)]
+            for emp in employees:
+                print(f"{emp.employee_id}: {emp.name} - {emp.biography}")
+
+            read_choice = input("Do you want to read a biography? (yes/no): ")
+            if read_choice.lower() == 'yes':
+                employee_id = input("Enter the employee ID to view biography: ")
+                employee = next((emp for emp in employees if emp.employee_id == employee_id), None)
+                if employee:
+                    print(f"Biography for {employee.name}: {employee.biography}")
+                    # Assuming each biography has a list of documents
+                    for doc in employee.biography.documents:
+                        print(f"Document: {doc.title}")
+                else:
+                    print("Employee not found")
+
         elif choice == '2':
-            print("\n1. View Biography\n2. Update Biography")
-            bio_choice = input("Enter your choice: ")
-            if bio_choice == '1':
-                print("Biography: ", user.biography)
-            elif bio_choice == '2':
-                new_bio = input("Enter new biography: ")
-                kms.update_employee_biography(user.employee_id, new_bio)
-            else:
-                print("Invalid choice")
+            # Logic for editing client account
+            pass
+
         elif choice == '3':
             break
         else:
             print("Invalid choice")
 
-def client_actions(kms, user):
+
+
+def employee_actions(user_manager, user):
     while True:
-        print("\n1. View Biographies\n2. Access Reports\n3. Logout")
+        print("\n1. Add Document to Biography\n2. Edit Account\n3. Logout")
         choice = input("Enter your choice: ")
         if choice == '1':
-            employee_id = input("Enter the employee ID to view biography: ")
-            # Logic to view biography of the specified employee
-            employee = next((emp for emp in kms.database['employees'] if emp.employee_id == employee_id), None)
-            if employee:
-                print(f"Biography for {employee.name}: {employee.biography}")
-            else:
-                print("Employee not found")
+            doc_title = input("Enter document title: ")
+            doc_content = input("Enter document content: ")
+            document = Document(str(uuid.uuid4()), doc_title, doc_content, user.biography.biography_id, None)  # Assuming a constructor for Document
+            user.biography.add_document(document)
+            print("Document added to your biography")
+            user_manager.save_users() # Save changes to the JSON file
         elif choice == '2':
-            # Access reports logic
-            print("Reports feature not implemented yet")
+            # Logic for editing employee account
+            pass
+
         elif choice == '3':
             break
         else:
             print("Invalid choice")
-
 
 def main():
     user_manager = UserManager()
@@ -94,6 +101,12 @@ def main():
                 authenticator.record_session(user.user_id, login_time, logout_time)
                 print("Login successful for:", user.name)
                 # Further actions based on user type (employee/client)
+                if user.role == "client":
+                    client_actions(user_manager, user)
+                elif user.role == "employee":
+                    employee_actions(user_manager, user)
+                else:
+                    print("Invalid user type")
             else:
                 print("Login failed")
         elif choice == '3':
