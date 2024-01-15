@@ -1,4 +1,3 @@
-import uuid
 class Authentication:
     def __init__(self, user_manager):
         self.user_manager = user_manager
@@ -10,7 +9,6 @@ class Authentication:
 
     def record_session(self, user_id, login_time, logout_time):
         session = {
-            'auth_id': str(uuid.uuid4()),
             'login_time': login_time,
             'logout_time': logout_time,
             'user_id': user_id
