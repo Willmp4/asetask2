@@ -57,5 +57,14 @@
             "experience": 9
         }
     ],
-    "clients": []
+    "clients": [
+        {
+            "user_id": "74288ba1-1f89-4e31-a1a7-4bbabe2b7dc3",
+            "name": "c",
+            "role": "client",
+            "email": "c",
+            "password": "c",
+            "company_name": "c"
+        }
+    ]
 }
