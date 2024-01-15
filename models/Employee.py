@@ -4,9 +4,12 @@ from Biography import Biography
 import uuid
 
 class Employee(User):
-    def __init__(self, user_id, name, role, email, password, biography_description, skills, experience):
+    def __init__(self, user_id, name, role, email, password, biography_description, skills, experience, biography=None):
         super().__init__(user_id, name, role, email, password)
-        self.biography = Biography(str(uuid.uuid4()), name, biography_description, user_id, None, None)
+        if biography is None:
+            self.biography = Biography(str(uuid.uuid4()), name, biography_description, user_id, None, None)
+        else:
+            self.biography = biography
         self.skills = skills
         self.experience = experience
     
