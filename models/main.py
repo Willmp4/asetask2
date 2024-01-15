@@ -1,6 +1,4 @@
 from Authentication import Authentication
-from KMS import KnowledgeManagementSystem
-from Biography import Biography
 from Document import Document
 from Employee import Employee, Client
 from UserManager import UserManager
@@ -38,34 +36,37 @@ def client_actions(user_manager, user):
             for emp in employees:
                 print(f"{emp.name}: {emp.name} - {emp.biography.description}")
                 #need to match name to employee_id
-                employee_id = next((emp.user_id for emp in employees if emp.name == employee_id), None) 
-                employee = next((emp for emp in employees if emp.user_id == employee_id), None)
-                if employee:
-                    print(f"Biography for {employee.name}: {employee.biography.description}")
-                    for doc in employee.biography.documents:
-                        print(f"Document: {doc.title}")
-                        doc_choice = input("Which document do you want to read?: ")
-                        for doc in employee.biography.documents:
-                            if doc.title == doc_choice:
-                                print(f"Title: {doc.title}")
-                                print(f"{doc.content}")
-                            #check if they are done reading
-                            done_reading = input("Are you done reading? (yes/no): ")
-                            if done_reading.lower() == 'yes':
-                                break
-                else:
-                    print("Employee not found")
-
+            employee_id = input("Which employee's biography do you want to read?: ")
+            employee_id = next((emp.user_id for emp in employees if emp.name == employee_id), None) 
+            employee = next((emp for emp in employees if emp.user_id == employee_id), None)
+            if not employee: 
+                print("Employee not found") 
+                break
+            print(f"Biography for {employee.name}: {employee.biography.description}")
+            for doc in employee.biography.documents:
+                print(f"Document: {doc.title}")
+                doc_choice = input("Which document do you want to read?: ")
+                for doc in employee.biography.documents:
+                    if doc.title != doc_choice:
+                        print("Document not found")
+                        break
+                    print(f"Title: {doc.title}")
+                    print(f"{doc.content}")
+                    #check if they are done reading
+                    done_reading = input("Are you done reading? (yes/no): ")
+                    if done_reading.lower() == 'yes':
+                        break
         elif choice == '2':
             # Logic for editing client account
-            pass
-
+            new_name = input("Enter new name: ")
+            new_email = input("Enter new email: ")
+            new_password = input("Enter new password: ")
+            user.update_profile(new_name, new_email, new_password)
+            user_manager.save_users()
         elif choice == '3':
             break
         else:
             print("Invalid choice")
-
-
 
 def employee_actions(user_manager, user):
     while True:
@@ -80,8 +81,11 @@ def employee_actions(user_manager, user):
             user_manager.save_users() # Save changes to the JSON file
         elif choice == '2':
             # Logic for editing employee account
-            pass
-
+            new_name = input("Enter new name: ")
+            new_email = input("Enter new email: ")
+            new_password = input("Enter new password: ")
+            user.update_profile(new_name, new_email, new_password)
+            user_manager.save_users()
         elif choice == '3':
             break
         else:

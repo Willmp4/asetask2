@@ -17,6 +17,8 @@ class KnowledgeManagementSystem:
     def generate_reports(self):
         pass
 
+    
+
     def search_employees(self, criteria):
         matching_employees = []
         for employee in self.database['employees']:
