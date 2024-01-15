@@ -6,6 +6,7 @@ class Biography:
         self.client_id = client_id
         self.start_date = start_date
         self.end_date = end_date
+        self.documents = []
 
     def add_document(self, document):
         self.documents.append(document)
