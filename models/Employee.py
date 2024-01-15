@@ -36,6 +36,16 @@ class Client(User):
         super().__init__(user_id, name, role, email, password)
         self.company_name = company_name
 
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'name': self.name,
+            'role': self.role,
+            'email': self.email,
+            'password': self.password,
+            'company_name': self.company_name
+        }
+
 
     @staticmethod
     def create_user( user_id, name, email, password, company_name, ):

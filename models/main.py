@@ -36,17 +36,23 @@ def client_actions(user_manager, user):
         if choice == '1':
             employees = [u for u in user_manager.users.values() if isinstance(u, Employee)]
             for emp in employees:
-                print(f"{emp.employee_id}: {emp.name} - {emp.biography}")
-
-            read_choice = input("Do you want to read a biography? (yes/no): ")
-            if read_choice.lower() == 'yes':
-                employee_id = input("Enter the employee ID to view biography: ")
-                employee = next((emp for emp in employees if emp.employee_id == employee_id), None)
+                print(f"{emp.name}: {emp.name} - {emp.biography.description}")
+                #need to match name to employee_id
+                employee_id = next((emp.user_id for emp in employees if emp.name == employee_id), None) 
+                employee = next((emp for emp in employees if emp.user_id == employee_id), None)
                 if employee:
-                    print(f"Biography for {employee.name}: {employee.biography}")
-                    # Assuming each biography has a list of documents
+                    print(f"Biography for {employee.name}: {employee.biography.description}")
                     for doc in employee.biography.documents:
                         print(f"Document: {doc.title}")
+                        doc_choice = input("Which document do you want to read?: ")
+                        for doc in employee.biography.documents:
+                            if doc.title == doc_choice:
+                                print(f"Title: {doc.title}")
+                                print(f"{doc.content}")
+                            #check if they are done reading
+                            done_reading = input("Are you done reading? (yes/no): ")
+                            if done_reading.lower() == 'yes':
+                                break
                 else:
                     print("Employee not found")
 
