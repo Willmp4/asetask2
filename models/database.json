@@ -1,73 +1,31 @@
 {
     "employees": [
         {
-            "user_id": "e62a5662-65ac-4fe0-87fa-55f121349604",
-            "name": "q",
+            "user_id": "f1770da8-10d6-4136-9c95-28d8c36144be",
+            "name": "BOSSY",
             "role": "employee",
-            "email": "q",
-            "password": "q",
-            "biography": {
-                "biography_id": "1692acd0-ae0d-48dc-a935-9d1185f104ed",
-                "name": "b",
-                "description": "b",
-                "employee_id": "e62a5662-65ac-4fe0-87fa-55f121349604",
-                "start_date": null,
-                "end_date": null,
-                "documents": [
-                    {
-                        "document_id": "8eeec854-a61a-485d-a3d7-3c257efebb73",
-                        "title": "b",
-                        "content": "b",
-                        "biography": "1692acd0-ae0d-48dc-a935-9d1185f104ed",
-                        "upload_date": null
-                    },
-                    {
-                        "document_id": "9769c5a3-d475-423e-92f1-0759ae6fbb6a",
-                        "title": "b",
-                        "content": "b",
-                        "biography": "1692acd0-ae0d-48dc-a935-9d1185f104ed",
-                        "upload_date": null
-                    },
-                    {
-                        "document_id": "ed042bac-b62f-496c-9426-49e48192c6a4",
-                        "title": "c",
-                        "content": "c",
-                        "biography": "1692acd0-ae0d-48dc-a935-9d1185f104ed",
-                        "upload_date": null
-                    },
-                    {
-                        "document_id": "24098b36-e55c-4dcb-bfc4-eedbdcc5fe32",
-                        "title": "boss ",
-                        "content": "boss",
-                        "biography": "1692acd0-ae0d-48dc-a935-9d1185f104ed",
-                        "upload_date": null
-                    }
-                ]
-            },
-            "skills": [
-                "b"
-            ],
-            "experience": 8
-        },
-        {
-            "user_id": "60d53b77-def2-4ee8-be17-60d917513f48",
-            "name": "william",
-            "role": "employee",
-            "email": "goudie58@gmail.com",
+            "email": "BOSSY@gmail.com",
             "password": "pass",
             "biography": {
-                "biography_id": "15c9af1f-7e41-43bd-839d-a1a1ee0b0509",
-                "name": "william",
-                "description": "me",
-                "employee_id": "60d53b77-def2-4ee8-be17-60d917513f48",
+                "biography_id": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
+                "name": "Will",
+                "description": "This is me",
+                "employee_id": "f1770da8-10d6-4136-9c95-28d8c36144be",
                 "start_date": null,
                 "end_date": null,
                 "documents": [
                     {
-                        "document_id": "a3235f8b-1433-4430-aba8-2bcb0cab0e91",
-                        "title": "me",
-                        "content": "mememem",
-                        "biography": "15c9af1f-7e41-43bd-839d-a1a1ee0b0509",
+                        "document_id": "25184493-bf2b-4bcb-94c6-051d54cfa400",
+                        "title": "Goat bizz",
+                        "content": "This is how I became a GOAT",
+                        "biography": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "3668e349-c58a-4673-95ab-5582896a2dc4",
+                        "title": "should we cook",
+                        "content": "lets cook so we don't make money",
+                        "biography": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
                         "upload_date": null
                     }
                 ]
@@ -80,36 +38,12 @@
     ],
     "clients": [
         {
-            "user_id": "f7ba5694-de58-443d-bd8a-66d69c4857be",
-            "name": "w",
+            "user_id": "fed4e397-5870-48f1-9ad5-0d0e44cb87d2",
+            "name": "Naia baby",
             "role": "client",
-            "email": "w",
-            "password": "w",
-            "company_name": "w"
-        },
-        {
-            "user_id": "d283fe27-8312-4cbe-b46a-61dbfe9fd4e1",
-            "name": "boss",
-            "role": "client",
-            "email": "boss",
-            "password": "boss",
-            "company_name": "boss"
-        },
-        {
-            "user_id": "231122b5-70e0-4ffb-9ada-b61f49123b92",
-            "name": "b",
-            "role": "client",
-            "email": "b",
-            "password": "b",
-            "company_name": "b"
-        },
-        {
-            "user_id": "6f6665b1-7206-4d7d-a526-a3f6e210c7f3",
-            "name": "j",
-            "role": "client",
-            "email": "j",
-            "password": "j",
-            "company_name": "j"
+            "email": "naiafoucan@gmail.com",
+            "password": "pass",
+            "company_name": "lloyds"
         }
     ]
 }
