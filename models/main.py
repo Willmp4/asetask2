@@ -5,29 +5,23 @@ from UserManager import UserManager
 from Authentication import Authentication
 from KMS import KnowledgeManagementSystem
 import uuid
-import json
 
-def create_user(user_manager, user_type):
+def create_user(kms, user_type):
     name = input("Enter name: ")
     email = input("Enter email: ")
     password = input("Enter password: ")
-    
+
     if user_type == 'employee':
-        employee_id = str(uuid.uuid4())
         biography_description = input("Enter biography: ")
         skills = input("Enter skills (comma-separated): ").split(',')
         experience = int(input("Enter experience (years): "))
         role = user_type
-        user = Employee(employee_id, name, role, email, password, biography_description, skills, experience)
+        kms.create_user(user_type, name=name, role=role, email=email, password=password, biography_description=biography_description, skills=skills, experience=experience)
     elif user_type == 'client':
-        client_id = str(uuid.uuid4())
         company_name = input("Enter company name: ")
-        user = Client(client_id, name, email, password, company_name)
+        kms.create_user(user_type, name=name, email=email, password=password, company_name=company_name)
     else:
         raise ValueError("Invalid user type")
-
-    user_manager.add_user(user)
-
 
 def read_documents(employees):
     for emp in employees:
@@ -72,23 +66,24 @@ def client_actions(user_manager, user, kms):
 
 def employee_actions(user_manager, user, kms):
     while True:
-        print("\n1. Add Document to Biography\n2. Edit Account\n3. Logout")
+        print("\n1. Add Document to Biography\n2. Read Documents\n3. Edit Account\n3. Logout")
         choice = input("Enter your choice: ")
         if choice == '1':
             doc_title = input("Enter document title: ")
             doc_content = input("Enter document content: ")
             document = Document(str(uuid.uuid4()), doc_title, doc_content, user.biography.biography_id, None)  # Assuming a constructor for Document
-            user.biography.add_document(document)
-            print("Document added to your biography")
-            user_manager.save_users() # Save changes to the JSON file
+            kms.add_document_to_biography(user.biography.biography_id, document)
         elif choice == '2':
+            employees = [u for u in user_manager.users.values() if isinstance(u, Employee)]
+            read_documents(employees)
+        elif choice == '3':
             # Logic for editing employee account
             new_name = input("Enter new name: ")
             new_email = input("Enter new email: ")
             new_password = input("Enter new password: ")
             kms.update_user_profile(user.user_id, name=new_name, email=new_email, password=new_password)
 
-        elif choice == '3':
+        elif choice == '4':
             break
         else:
             print("Invalid choice")
@@ -102,12 +97,11 @@ def main():
         choice = input("\n1. Create User\n2. Login\n3. Exit\nEnter your choice: ")
         if choice == '1':
             user_type = input("Enter user type (employee/client): ").lower()
-            # use while loop to check if user_type is valid
             while user_type not in ['employee', 'client']:
                 print("Invalid user type")
                 user_type = input("Enter user type (employee/client): ").lower()
-            
-            create_user(user_manager, user_type)
+            create_user(kms, user_type)
+  
         elif choice == '2':
             email = input("Enter email: ")
             password = input("Enter password: ")
