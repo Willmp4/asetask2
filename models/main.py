@@ -27,35 +27,37 @@ def create_user(user_manager, user_type):
 
     user_manager.add_user(user)
 
+
+def read_documents(employees):
+    for emp in employees:
+        print(f"{emp.name} - {emp.biography.description}")
+
+    employee_name = input("Which employee's biography do you want to read?: ").lower()
+    employee = next((emp for emp in employees if emp.name.lower() == employee_name), None)
+
+    if not employee: 
+        print("Employee not found")
+        return
+
+    print(f"Biography for {employee.name}: {employee.biography.description}")
+    for doc in employee.biography.documents:
+        print(f"Document: {doc.title}")
+
+    doc_choice = input("Which document do you want to read?: ").lower()
+    document = next((doc for doc in employee.biography.documents if doc.title.lower() == doc_choice), None)
+
+    if document:
+        print(f"Title: {document.title}\n{document.content}")
+    else:
+        print("Document not found")
+
 def client_actions(user_manager, user):
     while True:
         print("\n1. View Employee Biographies\n2. Edit Account\n3. Logout")
         choice = input("Enter your choice: ")
         if choice == '1':
             employees = [u for u in user_manager.users.values() if isinstance(u, Employee)]
-            for emp in employees:
-                print(f"{emp.name}: {emp.name} - {emp.biography.description}")
-                #need to match name to employee_id
-            employee_id = input("Which employee's biography do you want to read?: ")
-            employee_id = next((emp.user_id for emp in employees if emp.name == employee_id), None) 
-            employee = next((emp for emp in employees if emp.user_id == employee_id), None)
-            if not employee: 
-                print("Employee not found") 
-                break
-            print(f"Biography for {employee.name}: {employee.biography.description}")
-            for doc in employee.biography.documents:
-                print(f"Document: {doc.title}")
-                doc_choice = input("Which document do you want to read?: ")
-                for doc in employee.biography.documents:
-                    if doc.title != doc_choice:
-                        print("Document not found")
-                        break
-                    print(f"Title: {doc.title}")
-                    print(f"{doc.content}")
-                    #check if they are done reading
-                    done_reading = input("Are you done reading? (yes/no): ")
-                    if done_reading.lower() == 'yes':
-                        break
+            read_documents(employees)
         elif choice == '2':
             # Logic for editing client account
             new_name = input("Enter new name: ")
@@ -98,7 +100,12 @@ def main():
     while True:
         choice = input("\n1. Create User\n2. Login\n3. Exit\nEnter your choice: ")
         if choice == '1':
-            user_type = input("Enter user type (employee/client): ")
+            user_type = input("Enter user type (employee/client): ").lower()
+            # use while loop to check if user_type is valid
+            while user_type not in ['employee', 'client']:
+                print("Invalid user type")
+                user_type = input("Enter user type (employee/client): ").lower()
+            
             create_user(user_manager, user_type)
         elif choice == '2':
             email = input("Enter email: ")

@@ -1,70 +1,66 @@
 {
     "employees": [
         {
-            "user_id": "617136f3-e193-4f1c-b12d-a73c5b16266d",
-            "name": "a",
+            "user_id": "9deeee8a-e904-41a5-ba0e-c59795ce52fd",
+            "name": "William Goudie",
             "role": "employee",
-            "email": "a",
-            "password": "a",
+            "email": "goudie58@gmail.com",
+            "password": "password",
             "biography": {
-                "biography_id": "752fb716-858e-4a3d-8e48-9eef570f4d11",
-                "name": "a",
-                "description": "a",
-                "employee_id": "617136f3-e193-4f1c-b12d-a73c5b16266d",
+                "biography_id": "c48760e2-c3cb-4e16-b461-f97163989d0c",
+                "name": "Will Bruckmann",
+                "description": "this is about me",
+                "employee_id": "9deeee8a-e904-41a5-ba0e-c59795ce52fd",
                 "start_date": null,
                 "end_date": null,
                 "documents": [
                     {
-                        "document_id": "a6d8379e-5074-4713-9502-a0324e12b417",
-                        "title": "a",
-                        "content": "a",
-                        "biography": "752fb716-858e-4a3d-8e48-9eef570f4d11",
+                        "document_id": "09cbea99-af1d-421c-a549-6caf2bb01295",
+                        "title": "the goat",
+                        "content": "the goaty, of goats",
+                        "biography": "c48760e2-c3cb-4e16-b461-f97163989d0c",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "2ad2df6a-1443-431b-b46d-2ec0e2650a67",
+                        "title": "I get bitche",
+                        "content": "all the bitches are mine",
+                        "biography": "c48760e2-c3cb-4e16-b461-f97163989d0c",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "ab51c4f4-a786-4cb8-b231-5e02b136b201",
+                        "title": "test",
+                        "content": "test",
+                        "biography": "c48760e2-c3cb-4e16-b461-f97163989d0c",
                         "upload_date": null
                     }
                 ]
             },
             "skills": [
-                "a"
+                "python",
+                "java",
+                "lover"
             ],
-            "experience": 9
-        },
-        {
-            "user_id": "45b522c7-c4ec-48e1-9dc1-bf87db0d8fe4",
-            "name": "b",
-            "role": "employee",
-            "email": "b",
-            "password": "b",
-            "biography": {
-                "biography_id": "f81b1c98-daf9-4e2f-b2e1-4c21ad55b8f5",
-                "name": "b",
-                "description": "b",
-                "employee_id": "45b522c7-c4ec-48e1-9dc1-bf87db0d8fe4",
-                "start_date": null,
-                "end_date": null,
-                "documents": [
-                    {
-                        "document_id": "a6753510-03b7-40e3-a877-8a77851163c3",
-                        "title": "goat",
-                        "content": "goat",
-                        "biography": "f81b1c98-daf9-4e2f-b2e1-4c21ad55b8f5",
-                        "upload_date": null
-                    }
-                ]
-            },
-            "skills": [
-                "bb"
-            ],
-            "experience": 9
+            "experience": 67
         }
     ],
     "clients": [
         {
-            "user_id": "74288ba1-1f89-4e31-a1a7-4bbabe2b7dc3",
-            "name": "c",
+            "user_id": "7b533e9e-7898-4223-b8a8-b84486f8da3b",
+            "name": "Naia Foucan",
             "role": "client",
-            "email": "c",
-            "password": "c",
-            "company_name": "c"
+            "email": "naiafoucan@gmail.com",
+            "password": "password",
+            "company_name": "lloyds"
+        },
+        {
+            "user_id": "1a0e7487-07f2-4bb4-b3b4-9eb46d5cf906",
+            "name": "a",
+            "role": "client",
+            "email": "a",
+            "password": "a",
+            "company_name": "a"
         }
     ]
 }
