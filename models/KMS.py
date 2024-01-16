@@ -1,4 +1,5 @@
 from Employee import Employee, Client
+import uuid
 
 class KnowledgeManagementSystem:
     def __init__(self, system_id, name, database):
@@ -16,7 +17,6 @@ class KnowledgeManagementSystem:
 
     def generate_reports(self):
         pass
-
 
     def search_employees(self, criteria):
         matching_employees = []
@@ -36,6 +36,16 @@ class KnowledgeManagementSystem:
     def add_user(self, user):
         self.database.add_user(user)
         print("User added to the system")
+    
+    def create_user(self, user_type, **kwargs):
+        if user_type == 'employee':
+            user = Employee(str(uuid.uuid4()), **kwargs)
+        elif user_type == 'client':
+            user = Client(str(uuid.uuid4()), **kwargs)
+        else:
+            raise ValueError("Invalid user type")
+        self.add_user(user)
+        print("User created and added to the system")
 
     def update_user_profile(self, user_id, **kwargs):
         user = self.database.find_user_by_id(user_id)
