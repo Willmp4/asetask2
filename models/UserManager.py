@@ -16,8 +16,16 @@ class UserManager:
     
     def find_user_by_email(self, email):
         return next((user for user in self.users.values() if user.email == email), None)
+    
+    def find_user_by_id(self, user_id):
+        return self.users.get(user_id, None)
+    
+    def find_biography_by_id(self, biography_id):
+        for user in self.users.values():
+            if isinstance(user, Employee) and user.biography.biography_id == biography_id:
+                return user.biography
+        return None
 
-        
     def load_users(self):
         try:
             with open(self.filename, 'r') as file:

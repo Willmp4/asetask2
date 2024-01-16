@@ -3,6 +3,7 @@ from Document import Document
 from Employee import Employee, Client
 from UserManager import UserManager
 from Authentication import Authentication
+from KMS import KnowledgeManagementSystem
 import uuid
 import json
 
@@ -51,7 +52,7 @@ def read_documents(employees):
     else:
         print("Document not found")
 
-def client_actions(user_manager, user):
+def client_actions(user_manager, user, kms):
     while True:
         print("\n1. View Employee Biographies\n2. Edit Account\n3. Logout")
         choice = input("Enter your choice: ")
@@ -63,14 +64,13 @@ def client_actions(user_manager, user):
             new_name = input("Enter new name: ")
             new_email = input("Enter new email: ")
             new_password = input("Enter new password: ")
-            user.update_profile(new_name, new_email, new_password)
-            user_manager.save_users()
+            kms.update_user_profile(user.user_id, name=new_name, email=new_email, password=new_password)
         elif choice == '3':
             break
         else:
             print("Invalid choice")
 
-def employee_actions(user_manager, user):
+def employee_actions(user_manager, user, kms):
     while True:
         print("\n1. Add Document to Biography\n2. Edit Account\n3. Logout")
         choice = input("Enter your choice: ")
@@ -86,8 +86,8 @@ def employee_actions(user_manager, user):
             new_name = input("Enter new name: ")
             new_email = input("Enter new email: ")
             new_password = input("Enter new password: ")
-            user.update_profile(new_name, new_email, new_password)
-            user_manager.save_users()
+            kms.update_user_profile(user.user_id, name=new_name, email=new_email, password=new_password)
+
         elif choice == '3':
             break
         else:
@@ -95,6 +95,7 @@ def employee_actions(user_manager, user):
 
 def main():
     user_manager = UserManager()
+    kms = KnowledgeManagementSystem("KmsV1","KMS", user_manager)
     authenticator = Authentication(user_manager)
 
     while True:
@@ -119,9 +120,9 @@ def main():
                 print("Login successful for:", user.name)
                 # Further actions based on user type (employee/client)
                 if user.role == "client":
-                    client_actions(user_manager, user)
+                    client_actions(user_manager, user, kms)
                 elif user.role == "employee":
-                    employee_actions(user_manager, user)
+                    employee_actions(user_manager, user, kms)
                 else:
                     print("Invalid user type")
             else:

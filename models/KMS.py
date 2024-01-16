@@ -17,7 +17,6 @@ class KnowledgeManagementSystem:
     def generate_reports(self):
         pass
 
-    
 
     def search_employees(self, criteria):
         matching_employees = []
@@ -26,13 +25,6 @@ class KnowledgeManagementSystem:
                 matching_employees.append(employee)
         return matching_employees
     
-    def update_user_profile(self, user_id, name=None, email=None, password=None):
-        user = next((u for u in self.database['clients'] + self.database['employees'] if u['user_id'] == user_id), None)
-        if user:
-            user.update_profile(name, email, password)
-        else:
-            print("User not found")
-
     def update_employee_biography(self, employee_id, biography_data):
         for employee in self.database['employees']:
             if employee.employee_id == employee_id:
@@ -41,10 +33,24 @@ class KnowledgeManagementSystem:
                 return
         print("Employee not found")
 
+    def add_user(self, user):
+        self.database.add_user(user)
+        print("User added to the system")
+
+    def update_user_profile(self, user_id, **kwargs):
+        user = self.database.find_user_by_id(user_id)
+        if user:
+            user.update_profile(**kwargs)
+            self.database.save_users()
+            print("User profile updated")
+        else:
+            print("User not found")
+
     def add_document_to_biography(self, biography_id, document):
-        for biography in self.database['biographies']:
-            if biography.biography_id == biography_id:
-                biography.add_document(document)
-                print("Document added to biography")
-                return
-        print("Biography not found")
+        biography = self.database.find_biography_by_id(biography_id)
+        if biography:
+            biography.add_document(document)
+            self.database.save_users()
+            print("Document added to biography")
+        else:
+            print("Biography not found")
