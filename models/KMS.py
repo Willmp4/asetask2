@@ -14,16 +14,6 @@ class KnowledgeManagementSystem:
             print("Employee access granted")
         else:
             print("Access denied")
-
-    def generate_reports(self):
-        pass
-
-    def search_employees(self, criteria):
-        matching_employees = []
-        for employee in self.database['employees']:
-            if all(criteria[key] == getattr(employee, key, None) for key in criteria):
-                matching_employees.append(employee)
-        return matching_employees
     
     def update_employee_biography(self, employee_id, biography_data):
         for employee in self.database['employees']:
