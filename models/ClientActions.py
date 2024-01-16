@@ -7,7 +7,7 @@ class ClientActions:
         self.user = user
         self.kms = kms
 
-    def view_employee_biographies(self):
+    def read_documents(self):
         employees = [u for u in self.user_manager.users.values() if isinstance(u, Employee)]
         read_documents(employees)
 
