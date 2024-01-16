@@ -3,7 +3,6 @@ from Employee import Employee, Client
 from Biography import Biography
 from Document import Document
 
-
 class UserManager:
     def __init__(self, filename='database.json'):
         self.filename = filename
