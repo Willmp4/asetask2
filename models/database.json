@@ -41,6 +41,34 @@
                 "b"
             ],
             "experience": 8
+        },
+        {
+            "user_id": "60d53b77-def2-4ee8-be17-60d917513f48",
+            "name": "william",
+            "role": "employee",
+            "email": "goudie58@gmail.com",
+            "password": "pass",
+            "biography": {
+                "biography_id": "15c9af1f-7e41-43bd-839d-a1a1ee0b0509",
+                "name": "william",
+                "description": "me",
+                "employee_id": "60d53b77-def2-4ee8-be17-60d917513f48",
+                "start_date": null,
+                "end_date": null,
+                "documents": [
+                    {
+                        "document_id": "a3235f8b-1433-4430-aba8-2bcb0cab0e91",
+                        "title": "me",
+                        "content": "mememem",
+                        "biography": "15c9af1f-7e41-43bd-839d-a1a1ee0b0509",
+                        "upload_date": null
+                    }
+                ]
+            },
+            "skills": [
+                "goat"
+            ],
+            "experience": 99
         }
     ],
     "clients": [
@@ -51,6 +79,30 @@
             "email": "w",
             "password": "w",
             "company_name": "w"
+        },
+        {
+            "user_id": "d283fe27-8312-4cbe-b46a-61dbfe9fd4e1",
+            "name": "boss",
+            "role": "client",
+            "email": "boss",
+            "password": "boss",
+            "company_name": "boss"
+        },
+        {
+            "user_id": "231122b5-70e0-4ffb-9ada-b61f49123b92",
+            "name": "b",
+            "role": "client",
+            "email": "b",
+            "password": "b",
+            "company_name": "b"
+        },
+        {
+            "user_id": "6f6665b1-7206-4d7d-a526-a3f6e210c7f3",
+            "name": "j",
+            "role": "client",
+            "email": "j",
+            "password": "j",
+            "company_name": "j"
         }
     ]
 }

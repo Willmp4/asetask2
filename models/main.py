@@ -39,7 +39,7 @@ def main():
                 print("Invalid user type")
                 user_type = input("Enter user type (employee/client): ").lower()
             create_user(kms, user_type)
-        if choice == '2':  # Assuming this is the login section
+        elif choice == '2':  # Assuming this is the login section
             email = input("Enter email: ")
             password = input("Enter password: ")
             if authenticator.verify_login(email, password):

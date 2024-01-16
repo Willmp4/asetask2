@@ -35,7 +35,6 @@ class KnowledgeManagementSystem:
 
     def add_user(self, user):
         self.database.add_user(user)
-        print("User added to the system")
     
     def create_user(self, user_type, **kwargs):
         if user_type == 'employee':
