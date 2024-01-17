@@ -38,10 +38,10 @@ def gather_client_details(name, email, password):
     }
 
 
-def handle_add_document(user, kms):
+def handle_add_document(actions):
     doc_title = input("Enter document title: ")
     doc_content = input("Enter document content: ")
-    command = AddDocumentToBiographyCommand(kms, user, doc_title, doc_content)
+    command = AddDocumentToBiographyCommand(actions, doc_title, doc_content)
     command.execute()
 
 def handle_edit_account(user, kms):
@@ -55,19 +55,19 @@ def handle_view_documents(actions):
     command = ReadBiographyCommand(actions)
     command.execute()
 
-def handle_edit_biography(user, kms):
+def handle_edit_biography(actions):
     new_description = input("Enter new biography description: ")
-    command = UpdateBiographyCommand(kms, user.biography.biography_id, new_description)
+    command = UpdateBiographyCommand(actions, new_description)
     command.execute()
 
-def handle_edit_document(user, kms):
+def handle_edit_document(user, actions):
     for doc in user.biography.documents:
         print(doc.title)
     doc_id = input("Enter document ID to edit: ")
     new_title = input("Enter new document title (leave blank for no change): ")
     new_content = input("Enter new document content (leave blank for no change): ")
 
-    command = UpdateDocumentCommand(kms, user.biography.biography_id, doc_id, new_title, new_content)
+    command = UpdateDocumentCommand(actions, doc_id, new_title, new_content)
     command.execute()
 
 def employee_menu(user, user_manger, kms):
@@ -78,7 +78,7 @@ def employee_menu(user, user_manger, kms):
         if main_choice == '1':
             document_management(user,user_manger, kms)
         elif main_choice == '2':
-            biography_management(user, kms)
+            biography_management(user, user_manger, kms)
         elif main_choice == '3':
             account_management(user, kms)
         elif main_choice == '4':
@@ -91,23 +91,26 @@ def document_management(user, user_manager, kms):
         print("\nDocument Management\n-------------------\n1. Add Document to Biography\n2. View Documents\n3. Edit Document\n4. Go Back")
         choice = input("Select an action: ")
 
+        actions = EmployeeActions(user_manager, user, kms)
+
         if choice == '1':
-            handle_add_document(user, kms)
+            handle_add_document(actions)
         elif choice == '2':
-            handle_view_documents(EmployeeActions(user_manager, user, kms))
+            handle_view_documents(actions)
         elif choice == '3':
-            handle_edit_document(user, kms)
+            handle_edit_document(user, actions)
         elif choice == '4':
             break  # Go back to main menu
         else:
             print("Invalid choice")
 
-def biography_management(user, kms):
+def biography_management(user, user_manager, kms):
     while True:
+        actions = EmployeeActions(user_manager, user, kms)
         print("\nBiography Management\n--------------------\n1. Edit Biography\n2. Go Back")
         choice = input("Select an action: ")
         if choice == '1':
-            handle_edit_biography(user, kms)
+            handle_edit_biography(actions)
         elif choice == '2':
             break  # Go back to main menu
         else:

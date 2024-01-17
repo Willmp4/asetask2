@@ -47,8 +47,6 @@ class UserManager:
         except FileNotFoundError:
             pass
 
-
-
     def save_users(self):
         data = {
             'employees': [user.to_dict() for user in self.users.values() if isinstance(user, Employee)],
