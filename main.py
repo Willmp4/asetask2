@@ -1,11 +1,11 @@
-from Authentication import Authentication
-from UserManager import UserManager
-from Authentication import Authentication
-from KMS import KnowledgeManagementSystem
-from UserComands import CreateUserCommand, LoginUserCommand, UpdateUserProfileCommand       
-from EmployeeActions import EmployeeActions
-from ClientActions import ClientActions
-from BiographyComands import AddDocumentToBiographyCommand, ReadBiographyCommand
+from services.Authentication import Authentication
+from services.UserManager import UserManager
+from services.Authentication import Authentication
+from services.KMS import KnowledgeManagementSystem
+from commands.UserComands import CreateUserCommand, LoginUserCommand, UpdateUserProfileCommand       
+from actions.EmployeeActions import EmployeeActions
+from actions.ClientActions import ClientActions
+from commands.BiographyComands import AddDocumentToBiographyCommand, ReadBiographyCommand
 
 def gather_employee_details(name, email, password):
     biography_description = input("Enter biography: ")
@@ -81,9 +81,6 @@ def user_flow(user, user_manager, kms):
             break # Logging out
         else:
             print("Invalid choice")
-
-
-
 
 def main():
     user_manager = UserManager()

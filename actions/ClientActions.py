@@ -1,5 +1,5 @@
-from utils import read_documents
-from Employee import Employee
+from utils.utils import read_documents
+from models.Employee import Employee
 
 class ClientActions:
     def __init__(self, user_manager, user, kms):

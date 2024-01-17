@@ -1,4 +1,3 @@
-
 class Document:
     def __init__(self, document_id, title, content, biography, upload_date):
         self.document_id = document_id

@@ -1,10 +1,10 @@
 import json
-from Employee import Employee, Client
-from Biography import Biography
-from Document import Document
+from models.Employee import Employee, Client
+from biography.Biography import Biography
+from document.Document import Document
 
 class UserManager:
-    def __init__(self, filename='database.json'):
+    def __init__(self, filename='database/database.json'):
         self.filename = filename
         self.users = {}
         self.load_users()

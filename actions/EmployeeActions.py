@@ -1,6 +1,6 @@
-from Document import Document
-from utils import read_documents
-from Employee import Employee
+from document.Document import Document
+from utils.utils import read_documents
+from models.Employee import Employee
 import uuid
 
 class EmployeeActions:

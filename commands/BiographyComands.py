@@ -1,5 +1,5 @@
-from Command import Command
-from Document import Document
+from commands.Command import Command
+from document.Document import Document
 import uuid
 
 class AddDocumentToBiographyCommand(Command):

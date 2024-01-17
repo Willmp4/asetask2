@@ -44,6 +44,22 @@
             "email": "naiafoucan@gmail.com",
             "password": "pass",
             "company_name": "lloyds"
+        },
+        {
+            "user_id": "3d9ca98a-44e6-4c3a-89f5-ec3119c96988",
+            "name": "b",
+            "role": "client",
+            "email": "b",
+            "password": "b",
+            "company_name": "b"
+        },
+        {
+            "user_id": "6dec4db7-e870-4a67-872a-6add35324da2",
+            "name": "c",
+            "role": "client",
+            "email": "c",
+            "password": "c",
+            "company_name": "c"
         }
     ]
 }

@@ -1,4 +1,4 @@
-from Command import Command
+from commands.Command import Command
 
 class CreateUserCommand(Command):
     def __init__(self, kms, user_type, **additional_params):

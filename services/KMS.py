@@ -1,4 +1,4 @@
-from Employee import Employee, Client
+from models.Employee import Employee, Client
 import uuid
 
 class KnowledgeManagementSystem:

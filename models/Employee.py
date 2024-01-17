@@ -1,6 +1,6 @@
 
-from User import User
-from Biography import Biography
+from models.User import User
+from biography.Biography import Biography
 import uuid
 
 class Employee(User):
