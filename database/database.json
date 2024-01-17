@@ -9,15 +9,15 @@
             "biography": {
                 "biography_id": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
                 "name": "Will",
-                "description": "This is me",
+                "description": "this is me",
                 "employee_id": "f1770da8-10d6-4136-9c95-28d8c36144be",
                 "start_date": null,
                 "end_date": null,
                 "documents": [
                     {
                         "document_id": "25184493-bf2b-4bcb-94c6-051d54cfa400",
-                        "title": "Goat bizz",
-                        "content": "This is how I became a GOAT",
+                        "title": "GOAT SHIZZ",
+                        "content": "the one",
                         "biography": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
                         "upload_date": null
                     },

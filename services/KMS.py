@@ -53,3 +53,28 @@ class KnowledgeManagementSystem:
             print("Document added to biography")
         else:
             print("Biography not found")
+
+    def update_biography(self, biography_id, new_description):
+        biography = self.database.find_biography_by_id(biography_id)
+        if biography:
+            biography.description = new_description  # assuming biography has a 'description' attribute
+            self.database.save_users()
+            print("Biography updated successfully")
+        else:
+            print("Biography not found")
+
+    def update_document_in_biography(self, biography_id, document_id, new_title=None, new_content=None):
+        biography = self.database.find_biography_by_id(biography_id)
+        if biography:
+            document = next((doc for doc in biography.documents if doc.document_id == document_id), None)
+            if document:
+                if new_title:
+                    document.title = new_title
+                if new_content:
+                    document.content = new_content
+                self.database.save_users()
+                print("Document updated successfully")
+            else:
+                print("Document not found")
+        else:
+            print("Biography not found")

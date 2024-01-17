@@ -21,4 +21,27 @@ class ReadBiographyCommand(Command):
 
     def execute(self):
         self.actions.read_documents()
+
+
+class UpdateBiographyCommand(Command):
+    def __init__(self, kms, biography_id, new_description):
+        self.kms = kms
+        self.biography_id = biography_id
+        self.new_description = new_description
+
+    def execute(self):
+        self.kms.update_biography(self.biography_id, self.new_description)
+
+
+class UpdateDocumentCommand(Command):
+    def __init__(self, kms, biography_id, document_id, new_title, new_content):
+        self.kms = kms
+        self.biography_id = biography_id
+        self.document_id = document_id
+        self.new_title = new_title
+        self.new_content = new_content
+
+    def execute(self):
+        self.kms.update_document_in_biography(self.biography_id, self.document_id, self.new_title, self.new_content)
+
     

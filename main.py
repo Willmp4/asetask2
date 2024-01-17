@@ -5,7 +5,8 @@ from services.KMS import KnowledgeManagementSystem
 from commands.UserComands import CreateUserCommand, LoginUserCommand, UpdateUserProfileCommand       
 from actions.EmployeeActions import EmployeeActions
 from actions.ClientActions import ClientActions
-from commands.BiographyComands import AddDocumentToBiographyCommand, ReadBiographyCommand
+from commands.BiographyComands import AddDocumentToBiographyCommand, ReadBiographyCommand, UpdateBiographyCommand, UpdateDocumentCommand
+
 
 def gather_employee_details(name, email, password):
     biography_description = input("Enter biography: ")
@@ -49,9 +50,21 @@ def handle_view_documents(actions):
     command = ReadBiographyCommand(actions)
     command.execute()
 
+def handle_edit_biography(user, kms):
+    new_description = input("Enter new biography description: ")
+    command = UpdateBiographyCommand(kms, user.biography.biography_id, new_description)
+    command.execute()
+
+def handle_edit_document(user, kms):
+    doc_id = input("Enter document ID to edit: ")
+    new_title = input("Enter new document title (leave blank for no change): ")
+    new_content = input("Enter new document content (leave blank for no change): ")
+    command = UpdateDocumentCommand(kms, user.biography.biography_id, doc_id, new_title, new_content)
+    command.execute()
+
 def print_menu(role):
     if role == "employee":
-        print("\n1. Add Document to Biography\n2. View Documents\n3. Edit Account\n4. Logout")
+        print("\n1. Add Document to Biography\n2. View Documents\n3. Edit Account\n4. Edit Biography\n5. Edit Document\n6. Logout")
     else:
         print("\n1. View Documents\n2. Edit Account\n3. Logout")
 
@@ -60,7 +73,9 @@ def user_flow(user, user_manager, kms):
     employee_actions = {
         '1': lambda: handle_add_document(user, kms),
         '2': lambda: handle_view_documents(EmployeeActions(user_manager, user, kms)),
-        '3': lambda: handle_edit_account(user, kms)
+        '3': lambda: handle_edit_account(user, kms),
+        '4': lambda: handle_edit_biography(user, kms),
+        '5': lambda: handle_edit_document(user, kms)
     }
 
     client_actions = {
@@ -77,7 +92,7 @@ def user_flow(user, user_manager, kms):
 
         if action:
             action()
-        elif choice == '4' and user.role == "employee" or choice == '3' and user.role == "client":
+        elif choice == '6' and user.role == "employee" or choice == '3' and user.role == "client":
             break # Logging out
         else:
             print("Invalid choice")

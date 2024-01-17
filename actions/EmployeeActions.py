@@ -19,6 +19,16 @@ class EmployeeActions:
         employees = [u for u in self.user_manager.users.values() if isinstance(u, Employee)]
         read_documents(employees)
 
+    def edit_biography(self):
+        new_description = input("Enter new biography description: ")
+        self.kms.update_biography(self.user.biography.biography_id, new_description)
+
+    def edit_document(self):
+        doc_id = input("Enter document ID to edit: ")
+        new_title = input("Enter new document title (leave blank for no change): ")
+        new_content = input("Enter new document content (leave blank for no change): ")
+        self.kms.update_document_in_biography(self.user.biography.biography_id, doc_id, new_title, new_content)
+
     def edit_account(self):
         new_name = input("Enter new name: ")
         new_email = input("Enter new email: ")
