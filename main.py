@@ -11,7 +11,12 @@ from commands.BiographyComands import AddDocumentToBiographyCommand, ReadBiograp
 def gather_employee_details(name, email, password):
     biography_description = input("Enter biography: ")
     skills = input("Enter skills (comma-separated): ").split(',')
-    experience = int(input("Enter experience (years): "))
+    while True:
+        try:
+            experience = int(input("Enter experience (years): "))
+            break
+        except ValueError:
+            print("Invalid experience")
     role = "employee"
     return {
         "name": name,
