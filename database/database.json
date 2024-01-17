@@ -1,65 +1,50 @@
 {
     "employees": [
         {
-            "user_id": "f1770da8-10d6-4136-9c95-28d8c36144be",
-            "name": "BOSSY",
+            "user_id": "e009c1a9-5c86-4041-aff7-a2d22bf8fdc2",
+            "name": "will",
             "role": "employee",
-            "email": "BOSSY@gmail.com",
-            "password": "pass",
+            "email": "w@gmail.com",
+            "password": "pass1",
             "biography": {
-                "biography_id": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
-                "name": "Will",
-                "description": "this is me",
-                "employee_id": "f1770da8-10d6-4136-9c95-28d8c36144be",
+                "biography_id": "116f20c2-249f-4ff8-93c5-35449379073f",
+                "name": "william",
+                "description": "this isn't me",
+                "employee_id": "e009c1a9-5c86-4041-aff7-a2d22bf8fdc2",
                 "start_date": null,
                 "end_date": null,
                 "documents": [
                     {
-                        "document_id": "25184493-bf2b-4bcb-94c6-051d54cfa400",
-                        "title": "GOAT SHIZZ",
-                        "content": "the one",
-                        "biography": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
+                        "document_id": "103f9fcc-e196-44bb-9009-4282d6c5e3cb",
+                        "title": "Goat",
+                        "content": "bizz goat",
+                        "biography": "116f20c2-249f-4ff8-93c5-35449379073f",
                         "upload_date": null
                     },
                     {
-                        "document_id": "3668e349-c58a-4673-95ab-5582896a2dc4",
-                        "title": "should we cook",
-                        "content": "lets cook so we don't make money",
-                        "biography": "0c56f201-970b-4ef1-a4b7-6f00e4b82ab1",
+                        "document_id": "f7a3e7d2-d4d5-44c1-a8b9-490ead83fe87",
+                        "title": "one taps",
+                        "content": "ak47 op",
+                        "biography": "116f20c2-249f-4ff8-93c5-35449379073f",
                         "upload_date": null
                     }
                 ]
             },
             "skills": [
-                "goat"
+                "goat",
+                "skilled"
             ],
             "experience": 99
         }
     ],
     "clients": [
         {
-            "user_id": "fed4e397-5870-48f1-9ad5-0d0e44cb87d2",
-            "name": "Naia baby",
+            "user_id": "d16d8367-4ad0-44ae-ad87-0a302b8a4000",
+            "name": "H",
             "role": "client",
-            "email": "naiafoucan@gmail.com",
+            "email": "h@gmail.com",
             "password": "pass",
-            "company_name": "lloyds"
-        },
-        {
-            "user_id": "3d9ca98a-44e6-4c3a-89f5-ec3119c96988",
-            "name": "b",
-            "role": "client",
-            "email": "b",
-            "password": "b",
-            "company_name": "b"
-        },
-        {
-            "user_id": "6dec4db7-e870-4a67-872a-6add35324da2",
-            "name": "c",
-            "role": "client",
-            "email": "c",
-            "password": "c",
-            "company_name": "c"
+            "company_name": "hsbc"
         }
     ]
 }

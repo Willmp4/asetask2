@@ -61,46 +61,91 @@ def handle_edit_biography(user, kms):
     command.execute()
 
 def handle_edit_document(user, kms):
+    for doc in user.biography.documents:
+        print(doc.title)
     doc_id = input("Enter document ID to edit: ")
     new_title = input("Enter new document title (leave blank for no change): ")
     new_content = input("Enter new document content (leave blank for no change): ")
+
     command = UpdateDocumentCommand(kms, user.biography.biography_id, doc_id, new_title, new_content)
     command.execute()
 
-def print_menu(role):
-    if role == "employee":
-        print("\n1. Add Document to Biography\n2. View Documents\n3. Edit Account\n4. Edit Biography\n5. Edit Document\n6. Logout")
-    else:
-        print("\n1. View Documents\n2. Edit Account\n3. Logout")
+def employee_menu(user, user_manger, kms):
+    while True:
+        print("\nMain Menu\n---------\n1. Document Management\n2. Biography Management\n3. Account Management\n4. Logout")
+        main_choice = input("Select a category: ")
+
+        if main_choice == '1':
+            document_management(user,user_manger, kms)
+        elif main_choice == '2':
+            biography_management(user, kms)
+        elif main_choice == '3':
+            account_management(user, kms)
+        elif main_choice == '4':
+            break  # Logout
+        else:
+            print("Invalid choice")
+
+def document_management(user, user_manager, kms):
+    while True:
+        print("\nDocument Management\n-------------------\n1. Add Document to Biography\n2. View Documents\n3. Edit Document\n4. Go Back")
+        choice = input("Select an action: ")
+
+        if choice == '1':
+            handle_add_document(user, kms)
+        elif choice == '2':
+            handle_view_documents(EmployeeActions(user_manager, user, kms))
+        elif choice == '3':
+            handle_edit_document(user, kms)
+        elif choice == '4':
+            break  # Go back to main menu
+        else:
+            print("Invalid choice")
+
+def biography_management(user, kms):
+    while True:
+        print("\nBiography Management\n--------------------\n1. Edit Biography\n2. Go Back")
+        choice = input("Select an action: ")
+        if choice == '1':
+            handle_edit_biography(user, kms)
+        elif choice == '2':
+            break  # Go back to main menu
+        else:
+            print("Invalid choice")
+
+def account_management(user, kms):
+    while True:
+        print("\nAccount Management\n------------------\n1. Edit Account\n2. Go Back")
+        choice = input("Select an action: ")
+        if choice == '1':
+            handle_edit_account(user, kms)
+        elif choice == '2':
+            break  # Go back to main menu
+        else:
+            print("Invalid choice")
+
+
 
 
 def user_flow(user, user_manager, kms):
-    employee_actions = {
-        '1': lambda: handle_add_document(user, kms),
-        '2': lambda: handle_view_documents(EmployeeActions(user_manager, user, kms)),
-        '3': lambda: handle_edit_account(user, kms),
-        '4': lambda: handle_edit_biography(user, kms),
-        '5': lambda: handle_edit_document(user, kms)
-    }
+    if user.role == "employee":
+        employee_menu(user, user_manager, kms)
+    elif user.role == "client":
+        client_actions = {
+            '1': lambda: handle_view_documents(ClientActions(user_manager, user, kms)),
+            '2': lambda: handle_edit_account(user, kms)
+        }
+        while True:
+            print("\nClient Menu\n-----------\n1. View Documents\n2. Edit Account\n3. Logout")
+            choice = input("Enter your choice: ")
+            action = client_actions.get(choice)
+            if action:
+                action()
+            elif choice == '3':
+                break  # Logging out
+            else:
+                print("Invalid choice")
 
-    client_actions = {
-        '1': lambda: handle_view_documents(ClientActions(user_manager, user, kms)),
-        '2': lambda: handle_edit_account(user, kms)
-    }
-
-    actions = employee_actions if user.role == "employee" else client_actions
-
-    while True:
-        print_menu(user.role)
-        choice = input("Enter your choice: ")
-        action = actions.get(choice)
-
-        if action:
-            action()
-        elif choice == '6' and user.role == "employee" or choice == '3' and user.role == "client":
-            break # Logging out
-        else:
-            print("Invalid choice")
 
 def main():
     user_manager = UserManager()

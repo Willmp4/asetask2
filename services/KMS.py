@@ -66,7 +66,7 @@ class KnowledgeManagementSystem:
     def update_document_in_biography(self, biography_id, document_id, new_title=None, new_content=None):
         biography = self.database.find_biography_by_id(biography_id)
         if biography:
-            document = next((doc for doc in biography.documents if doc.document_id == document_id), None)
+            document = next((doc for doc in biography.documents if doc.title == document_id), None)
             if document:
                 if new_title:
                     document.title = new_title
