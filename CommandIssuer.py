@@ -43,7 +43,6 @@ class CommandIssuer:
             actions = kwargs['actions']
             command = GetEmployeeDocumentsCommand(actions)
             
-
         if command:
             return self.invoker.store_and_execute(command)
         else:
