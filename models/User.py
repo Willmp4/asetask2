@@ -7,10 +7,7 @@ class User:
         self.user_id = user_id
         self.name = name
         self.role = role
-        if self.validate_email(email):
-            self.email = email
-        else:
-            raise ValueError("Invalid email")
+        self.email = email
         if password_hashed:
             self.password = password
         else:

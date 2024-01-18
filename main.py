@@ -122,6 +122,10 @@ def account_management(command_issuer, user):
         if choice == '1':
             name = input("Enter name: ")
             email = input("Enter email: ")
+            while email == '' or '@' not in email or '.' not in email:
+                print("Invalid email")
+                email = input("Enter email: ")
+                
             password = input("Enter password: ")
             if user == 'employee':
                 actions = EmployeeActions(command_issuer.user_manager, user, command_issuer.kms)
@@ -151,7 +155,12 @@ def main():
                 print("Invalid user type")
                 continue
             name = input("Enter name: ")
+            #validate email
             email = input("Enter email: ")
+            while email == '' or '@' not in email or '.' not in email:
+                print("Invalid email")
+                email = input("Enter email: ")
+
             password = input("Enter password: ")
 
             additional_params = gather_employee_details(name, email, password) if user_type == 'employee' else gather_client_details(name, email, password)

@@ -43,6 +43,14 @@
             "email": "w@i.com",
             "password": "$2b$12$5bwLYvhZHfe7RK5ewrolAOc/EAkMR0CsLwjbn7w1H4RCH16.wMfOy",
             "company_name": "pass"
+        },
+        {
+            "user_id": "ba118e52-4387-49c9-8221-69b45537bb63",
+            "name": "will",
+            "role": "client",
+            "email": "w@gmail.com",
+            "password": "$2b$12$wyVuL3EmEKL4uL975EgwtOXrdE5mLJEkqXzsSr1Sjj.5eSv8s7AmW",
+            "company_name": "pass"
         }
     ]
 }
