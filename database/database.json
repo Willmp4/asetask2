@@ -1,60 +1,52 @@
 {
     "employees": [
         {
-            "user_id": "5cbb2f00-7bf8-40cd-84d7-56507dfc968f",
-            "name": "william",
+            "user_id": "e36166fc-fe9d-4496-9907-37df7d1b4277",
+            "name": "will",
             "role": "employee",
-            "email": "w.goudie@outlook.com",
-            "password": "pass",
+            "email": "w@w.com",
+            "password": "$2b$12$IQVSH24KvAff9C55T/EZmuSWd6GIdU2RGr6qxN4pbm9/PQx2SQRP6",
             "biography": {
-                "biography_id": "4fa7440c-a5a0-45d5-aa3b-3eb766dc3685",
+                "biography_id": "32313901-c615-46d5-8740-b2240c88e558",
                 "description": "this is me",
-                "employee_id": "5cbb2f00-7bf8-40cd-84d7-56507dfc968f",
+                "employee_id": "e36166fc-fe9d-4496-9907-37df7d1b4277",
                 "start_date": null,
                 "end_date": null,
                 "documents": []
             },
             "skills": [
-                "python"
+                "goat"
             ],
-            "experience": 78
+            "experience": 87
         },
         {
-            "user_id": "13dfae5f-7a79-4cf3-af4d-0d48ff1b7368",
-            "name": "naiou",
+            "user_id": "b59332ea-25ad-4e01-b836-92568e641fcb",
+            "name": "will",
             "role": "employee",
-            "email": "naiafoucan@gmail.com",
-            "password": "pass",
+            "email": "w@w.com",
+            "password": "$2b$12$QMX/pwNpn7xldH44K5s9MOg7fFUn40wATEvt3OQAfzwGT0AOrGLIe",
             "biography": {
-                "biography_id": "b38d5704-2d40-4b27-a7b4-0a894d9012c2",
-                "description": "this isn't me",
-                "employee_id": "13dfae5f-7a79-4cf3-af4d-0d48ff1b7368",
+                "biography_id": "7a9f3ed8-d21a-4602-a131-aa57f86374cb",
+                "description": "wowza",
+                "employee_id": "b59332ea-25ad-4e01-b836-92568e641fcb",
                 "start_date": null,
                 "end_date": null,
-                "documents": [
-                    {
-                        "document_id": "2d2ada10-d049-45e6-ad1a-54089ee11a03",
-                        "title": "my life",
-                        "content": "lool",
-                        "biography": "b38d5704-2d40-4b27-a7b4-0a894d9012c2",
-                        "upload_date": null
-                    }
-                ]
+                "documents": []
             },
             "skills": [
                 "goat"
             ],
-            "experience": 78
+            "experience": 87
         }
     ],
     "clients": [
         {
-            "user_id": "675668b2-1e4d-4a2f-ba73-52214daac68c",
+            "user_id": "251d340e-ab43-4db9-b51c-3bf165ce3807",
             "name": "will",
             "role": "client",
-            "email": "goudie58@gmail.com",
-            "password": "pass",
-            "company_name": "lloyds"
+            "email": "w@gmail.com",
+            "password": "$2b$12$ZRlLdw5qLZ2BR895PJuj4eoaO.eUdqMKQzL7nSCAn4XgsyDRNFzZC",
+            "company_name": "yes"
         }
     ]
 }

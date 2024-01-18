@@ -15,6 +15,7 @@ class Employee(User):
             self.biography = biography
         self.skills = skills
         self.experience = experience
+        self.set_password(password)
     
     #This method is used to convert the attributes of the class to a dictionary
     def to_dict(self):
@@ -41,6 +42,7 @@ class Client(User):
     def __init__(self, user_id, name, email, password, company_name, role="client"):
         super().__init__(user_id, name, role, email, password)
         self.company_name = company_name
+        self.set_password(password)
 
     def to_dict(self):
         return {

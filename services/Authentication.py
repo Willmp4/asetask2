@@ -5,10 +5,10 @@ class Authentication:
 
     def verify_login(self, email, password):
         user = self.user_manager.find_user_by_email(email)
-        if user and user.password == password:
+        if user and user.check_password(password):
             return user
-        return None  # Return None if authentication fails
-
+        return None
+    
     def record_session(self, user_id, login_time, logout_time):
         session = {
             'login_time': login_time,
