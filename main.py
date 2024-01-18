@@ -44,11 +44,11 @@ def handle_add_document(actions):
     command = AddDocumentToBiographyCommand(actions, doc_title, doc_content)
     command.execute()
 
-def handle_edit_account(user, kms):
+def handle_edit_account(actions):
     new_name = input("Enter new name: ")
     new_email = input("Enter new email: ")
     new_password = input("Enter new password: ")
-    command = UpdateUserProfileCommand(kms, user.user_id, new_name, new_email, new_password)
+    command = UpdateUserProfileCommand(actions, name=new_name, email=new_email, password=new_password)
     command.execute()
 
 def handle_view_documents(actions):
@@ -70,28 +70,28 @@ def handle_edit_document(user, actions):
     command = UpdateDocumentCommand(actions, doc_id, new_title, new_content)
     command.execute()
 
-def employee_menu(user, user_manger, kms):
+def employee_menu(user, user_manager, kms):
     while True:
         print("\nMain Menu\n---------\n1. Document Management\n2. Biography Management\n3. Account Management\n4. Logout")
         main_choice = input("Select a category: ")
 
+        actions = EmployeeActions(user_manager, user, kms)
+
         if main_choice == '1':
-            document_management(user,user_manger, kms)
+            document_management(user, actions)
         elif main_choice == '2':
-            biography_management(user, user_manger, kms)
+            biography_management(actions)
         elif main_choice == '3':
-            account_management(user, kms)
+            account_management(actions)
         elif main_choice == '4':
             break  # Logout
         else:
             print("Invalid choice")
 
-def document_management(user, user_manager, kms):
+def document_management(user, actions):
     while True:
         print("\nDocument Management\n-------------------\n1. Add Document to Biography\n2. View Documents\n3. Edit Document\n4. Go Back")
         choice = input("Select an action: ")
-
-        actions = EmployeeActions(user_manager, user, kms)
 
         if choice == '1':
             handle_add_document(actions)
@@ -104,9 +104,9 @@ def document_management(user, user_manager, kms):
         else:
             print("Invalid choice")
 
-def biography_management(user, user_manager, kms):
+def biography_management(actions):
     while True:
-        actions = EmployeeActions(user_manager, user, kms)
+
         print("\nBiography Management\n--------------------\n1. Edit Biography\n2. Go Back")
         choice = input("Select an action: ")
         if choice == '1':
@@ -116,19 +116,16 @@ def biography_management(user, user_manager, kms):
         else:
             print("Invalid choice")
 
-def account_management(user, kms):
+def account_management(actions):
     while True:
         print("\nAccount Management\n------------------\n1. Edit Account\n2. Go Back")
         choice = input("Select an action: ")
         if choice == '1':
-            handle_edit_account(user, kms)
+            handle_edit_account(actions)
         elif choice == '2':
             break  # Go back to main menu
         else:
             print("Invalid choice")
-
-
-
 
 def user_flow(user, user_manager, kms):
     if user.role == "employee":

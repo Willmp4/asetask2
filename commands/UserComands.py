@@ -21,12 +21,9 @@ class LoginUserCommand(Command):
         return user  # Return the user object if login is successful
 
 class UpdateUserProfileCommand(Command):
-    def __init__(self, kms, user_id, new_name, new_email, new_password):
-        self.kms = kms
-        self.user_id = user_id
-        self.new_name = new_name
-        self.new_email = new_email
-        self.new_password = new_password
+    def __init__(self, actions, **kwargs):
+        self.actions = actions
+        self.kwargs = kwargs
 
     def execute(self):
-        self.kms.update_user_profile(self.user_id, name=self.new_name, email=self.new_email, password=self.new_password)
+        self.actions.edit_account(**self.kwargs)
