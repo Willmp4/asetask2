@@ -1,13 +1,10 @@
-from services.Authentication import Authentication
 from services.UserManager import UserManager
-from services.Authentication import Authentication
 from services.KMS import KnowledgeManagementSystem
-from commands.UserComands import CreateUserCommand, LoginUserCommand, UpdateUserProfileCommand       
+from services.Authentication import Authentication
+from commands.Invoker import Invoker
+from CommandIssuer import CommandIssuer  
 from actions.EmployeeActions import EmployeeActions
 from actions.ClientActions import ClientActions
-from commands.BiographyComands import AddDocumentToBiographyCommand, ReadBiographyCommand, UpdateBiographyCommand, UpdateDocumentCommand
-from commands.Invoker import Invoker
-
 
 def gather_employee_details(name, email, password):
     biography_description = input("Enter biography: ")
@@ -38,115 +35,103 @@ def gather_client_details(name, email, password):
         "company_name": company_name
     }
 
+def user_flow(command_issuer, user):
+    if user.role == "employee":
+        employee_menu(command_issuer, user)
+    elif user.role == "client":
+        client_menu(command_issuer, user)
 
-def handle_add_document(invoker, actions):
-    doc_title = input("Enter document title: ")
-    doc_content = input("Enter document content: ")
-    command = AddDocumentToBiographyCommand(actions, doc_title, doc_content)
-    invoker.store_and_execute(command)
 
-def handle_edit_account(invoker, actions):
-    new_name = input("Enter new name: ")
-    new_email = input("Enter new email: ")
-    new_password = input("Enter new password: ")
-    command = UpdateUserProfileCommand(actions, name=new_name, email=new_email, password=new_password)
-    invoker.store_and_execute(command)
-
-def handle_view_documents(invoker, actions):
-    command = ReadBiographyCommand(actions)
-    invoker.store_and_execute(command)
-
-def handle_edit_biography(invoker, actions):
-    new_description = input("Enter new biography description: ")
-    command = UpdateBiographyCommand(actions, new_description)
-    invoker.store_and_execute(command)
-
-def handle_edit_document(user, invoker, actions):
-    for doc in user.biography.documents:
-        print(doc.title)
-    doc_id = input("Enter document ID to edit: ")
-    new_title = input("Enter new document title (leave blank for no change): ")
-    new_content = input("Enter new document content (leave blank for no change): ")
-
-    command = UpdateDocumentCommand(actions, doc_id, new_title, new_content)
-    invoker.store_and_execute(command)
-
-def employee_menu(invoker, user, user_manager, kms):
+def employee_menu(command_issuer, user):
     while True:
         print("\nMain Menu\n---------\n1. Document Management\n2. Biography Management\n3. Account Management\n4. Logout")
         main_choice = input("Select a category: ")
 
-        actions = EmployeeActions(user_manager, user, kms)
-
         if main_choice == '1':
-            document_management(invoker, user, actions)
+            document_management(command_issuer, user)
         elif main_choice == '2':
-            biography_management(invoker, actions)
+            biography_management(command_issuer, user)
         elif main_choice == '3':
-            account_management(invoker, actions)
+            account_management(command_issuer, user)
         elif main_choice == '4':
             break  # Logout
         else:
             print("Invalid choice")
 
-def document_management(invoker, user, actions):
+def client_menu(command_issuer, user):
+    while True:
+        print("\nClient Menu\n-----------\n1. View Documents\n2. Edit Account\n3. Logout")
+        choice = input("Enter your choice: ")
+        actions = ClientActions(command_issuer.user_manager, user, command_issuer.kms)
+
+        if choice == '1':
+            command_issuer.issue_command('view_documents', actions=actions)
+        elif choice == '2':
+            account_management(command_issuer, user)
+        elif choice == '3':
+            break  # Logout
+        else:
+            print("Invalid choice")
+
+def document_management(command_issuer, user):
     while True:
         print("\nDocument Management\n-------------------\n1. Add Document to Biography\n2. View Documents\n3. Edit Document\n4. Go Back")
         choice = input("Select an action: ")
+        actions = EmployeeActions(command_issuer.user_manager, user, command_issuer.kms)
 
         if choice == '1':
-            handle_add_document(invoker, actions)
+            doc_title = input("Enter document title: ")
+            doc_content = input("Enter document content: ")
+            command_issuer.issue_command('add_document', user=user, actions=actions,title=doc_title, content=doc_content)
         elif choice == '2':
-            handle_view_documents(invoker, actions)
+            command_issuer.issue_command('view_documents', user=user, actions=actions)
         elif choice == '3':
-            handle_edit_document(invoker, user, actions)
+            documents = command_issuer.issue_command('get_document', user=user, actions=actions)
+            if documents:
+                print("Available Documents:")
+                for doc in documents:
+                    print(f"Title: {doc.title}")
+
+            doc_id = input("Enter document title: ")
+            new_title = input("Enter new title: ")
+            new_content = input("Enter new content: ")
+            command_issuer.issue_command('edit_document', actions=actions, user=user, doc_id=doc_id, new_title=new_title, new_content=new_content)
         elif choice == '4':
             break  # Go back to main menu
         else:
             print("Invalid choice")
 
-def biography_management(invoker, actions):
-    while True:
+def biography_management(command_issuer, user):
+    while True: 
 
         print("\nBiography Management\n--------------------\n1. Edit Biography\n2. Go Back")
         choice = input("Select an action: ")
         if choice == '1':
-            handle_edit_biography(invoker, actions)
+            new_description = input("Enter new description: ")
+            command_issuer.issue_command('edit_biography', actions=EmployeeActions(command_issuer.user_manager, user, command_issuer.kms), new_description=new_description)
         elif choice == '2':
             break  # Go back to main menu
         else:
             print("Invalid choice")
 
-def account_management(invoker, actions):
+def account_management(command_issuer, user):
     while True:
         print("\nAccount Management\n------------------\n1. Edit Account\n2. Go Back")
         choice = input("Select an action: ")
         if choice == '1':
-            handle_edit_account(invoker, actions)
+            name = input("Enter name: ")
+            email = input("Enter email: ")
+            password = input("Enter password: ")
+            if user == 'employee':
+                actions = EmployeeActions(command_issuer.user_manager, user, command_issuer.kms)
+                command_issuer.issue_command('edit_user', actions=actions, name=name, email=email, password=password)
+            else:
+                actions = ClientActions(command_issuer.user_manager, user, command_issuer.kms)
+                command_issuer.issue_command('edit_user', actions=actions, name=name, email=email, password=password)
         elif choice == '2':
             break  # Go back to main menu
         else:
             print("Invalid choice")
-
-def user_flow(invoker, user, user_manager, kms):
-    if user.role == "employee":
-        employee_menu(invoker, user, user_manager, kms)
-    elif user.role == "client":
-        actions = ClientActions(user_manager, user, kms)
-        client_actions = {
-            '1': lambda: handle_view_documents(invoker, actions),
-            '2': lambda: handle_edit_account(invoker, actions)
-        }
-        while True:
-            print("\nClient Menu\n-----------\n1. View Documents\n2. Edit Account\n3. Logout")
-            choice = input("Enter your choice: ")
-            action = client_actions.get(choice)
-            if action:
-                action()
-            elif choice == '3':
-                break  # Logging out
-            else:
-                print("Invalid choice")
 
 
 def main():
@@ -154,6 +139,7 @@ def main():
     kms = KnowledgeManagementSystem("KmsV1", "KMS", user_manager)
     authenticator = Authentication(user_manager)
     invoker = Invoker()
+    command_issuer = CommandIssuer(invoker, user_manager, kms)  # Create a CommandIssuer instance
 
     while True:
         choice = input("\n1. Create User\n2. Login\n3. Exit\nEnter your choice: ")
@@ -166,23 +152,15 @@ def main():
             email = input("Enter email: ")
             password = input("Enter password: ")
 
-            if user_type == 'employee':
-                # Gather additional employee details
-                additional_params = gather_employee_details(name, email, password)
-            elif user_type == 'client':
-                # Gather additional client details
-                additional_params = gather_client_details(name, email, password)
-
-            create_user_command = CreateUserCommand(kms, user_type, **additional_params)
-            create_user_command.execute()
+            additional_params = gather_employee_details(name, email, password) if user_type == 'employee' else gather_client_details(name, email, password)
+            command_issuer.issue_command('create_user',user_type=user_type, **additional_params)  
 
         elif choice == '2':
             email = input("Enter email: ")
             password = input("Enter password: ")
-            login_command = LoginUserCommand(authenticator, email, password)
-            user = login_command.execute()
+            user = command_issuer.issue_command('login_user', authenticator=authenticator, email=email, password=password)
             if user:
-                user_flow(invoker, user, user_manager, kms)
+                user_flow(command_issuer, user)
             else:
                 print("Login failed")
         elif choice == '3':

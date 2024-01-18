@@ -10,6 +10,13 @@ class AddDocumentToBiographyCommand(Command):
     def execute(self):
         self.actions.add_document(self.title, self.content)
 
+class GetEmployeeDocumentsCommand(Command):
+    def __init__(self, actions):
+        self.actions = actions
+
+    def execute(self):
+        return self.actions.get_user_documents()  # Return the documents
+
 
 class ReadBiographyCommand(Command):
     def __init__(self, actions):

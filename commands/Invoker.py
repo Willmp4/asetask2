@@ -4,4 +4,4 @@ class Invoker:
 
     def store_and_execute(self, command):
         self.history.append(command)  # This could be used for undo functionality
-        command.execute()
+        return command.execute()

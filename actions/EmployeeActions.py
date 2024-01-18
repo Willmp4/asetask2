@@ -12,6 +12,9 @@ class EmployeeActions:
     def add_document(self, title, content):
         self.kms.add_document_to_biography(self.user.biography.biography_id, Document(str(uuid.uuid4()), title, content, self.user.biography.biography_id, None))
 
+    def get_user_documents(self):
+        return self.user.biography.documents
+    
     def read_documents(self):
         employees = [u for u in self.user_manager.users.values() if isinstance(u, Employee)]
         read_documents(employees)
