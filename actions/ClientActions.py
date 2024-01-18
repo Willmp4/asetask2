@@ -11,6 +11,6 @@ class ClientActions:
         employees = [u for u in self.user_manager.users.values() if isinstance(u, Employee)]
         read_documents(employees)
 
-    def edit_account(self, new_name, new_email, new_password):
-        self.kms.update_user_profile(self.user.user_id, name=new_name, email=new_email, password=new_password)
+    def edit_account(self, **kwargs):
+        self.kms.update_user_profile(self.user.user_id, **kwargs)
 

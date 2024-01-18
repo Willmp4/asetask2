@@ -2,14 +2,14 @@
     "employees": [
         {
             "user_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
-            "name": "william",
+            "name": "willy",
             "role": "employee",
-            "email": "w@gmail.com",
+            "email": "will@g.com",
             "password": "pass",
             "biography": {
                 "biography_id": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
                 "name": "william",
-                "description": "this is me",
+                "description": "this was ok",
                 "employee_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
                 "start_date": null,
                 "end_date": null,
@@ -18,6 +18,13 @@
                         "document_id": "92daa643-5eeb-45e9-a160-90fd23ed64e1",
                         "title": "my first day",
                         "content": "yesterday was my first day",
+                        "biography": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "8571a8d5-2242-4721-8b4b-c166d242154f",
+                        "title": "today was good",
+                        "content": "we had pizza",
                         "biography": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
                         "upload_date": null
                     }
@@ -68,9 +75,9 @@
         },
         {
             "user_id": "5f20106a-158e-43d8-8fc8-ac6f6d3c546b",
-            "name": "h",
+            "name": "he",
             "role": "client",
-            "email": "h@gmail.com",
+            "email": "he@he.co",
             "password": "pass",
             "company_name": "hsbc"
         }
