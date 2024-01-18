@@ -8,7 +8,6 @@
             "password": "pass",
             "biography": {
                 "biography_id": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
-                "name": "william",
                 "description": "lool",
                 "employee_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
                 "start_date": null,
@@ -57,7 +56,6 @@
             "password": "pass",
             "biography": {
                 "biography_id": "84fd5252-ab8c-472c-9c73-01085d65064e",
-                "name": "m",
                 "description": "this isn't me ",
                 "employee_id": "0c3896f3-5635-487c-8dd2-7d6c061a70d0",
                 "start_date": null,
