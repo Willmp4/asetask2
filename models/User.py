@@ -29,8 +29,9 @@ class User:
             else:
                 print("Invalid email")
         if password:
-            self.password = password
+            self.set_password(password)
         print("Profile updated")
+
 
     def set_password(self, password):
         hashed = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
