@@ -1,4 +1,6 @@
 from commands.Command import Command
+#The commands are using actions by calling the methods of the actions.
+#This is create user command
 
 class CreateUserCommand(Command):
     def __init__(self, kms, user_type, **additional_params):

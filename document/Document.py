@@ -1,3 +1,7 @@
+#Q: explain the purpose of this class and how it relates to biographies
+#This class is used to create a document object that can be uploaded to the database. 
+#It contains the document's title, content, biography, and upload date.
+#It has a many to one relationship with the biography class.
 class Document:
     def __init__(self, document_id, title, content, biography, upload_date):
         self.document_id = document_id
@@ -14,17 +18,3 @@ class Document:
             'biography': self.biography,
             'upload_date': self.upload_date
         }
-
-    def upload(self, db):
-        db['documents'].append(self)
-        print("Document uploaded")
-
-    def download(self):
-        print(f"Document titled '{self.title}' downloaded.")
-
-    def update(self, title=None, content=None):
-        if title:
-            self.title = title
-        if content:
-            self.content = content
-        print("Document updated")

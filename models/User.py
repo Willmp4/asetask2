@@ -1,3 +1,4 @@
+# Purpose: User class for the application
 class User:
     def __init__(self, user_id, name, role, email, password):
         self.user_id = user_id

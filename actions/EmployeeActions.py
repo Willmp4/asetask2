@@ -2,7 +2,9 @@ from document.Document import Document
 from utils.utils import read_documents
 from models.Employee import Employee
 import uuid
-
+#This is the EmployeeActions class
+#This class is used to define the actions that an employee can perform
+#The employee can add documents, read documents, edit their biography, edit their documents and edit their account
 class EmployeeActions:
     def __init__(self, user_manager, user, kms):
         self.user_manager = user_manager

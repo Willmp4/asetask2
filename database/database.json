@@ -2,14 +2,14 @@
     "employees": [
         {
             "user_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
-            "name": "willy",
+            "name": "willie",
             "role": "employee",
-            "email": "will@g.com",
+            "email": "w@gmail.com",
             "password": "pass",
             "biography": {
                 "biography_id": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
                 "name": "william",
-                "description": "this was ok",
+                "description": "lool",
                 "employee_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
                 "start_date": null,
                 "end_date": null,
@@ -25,6 +25,20 @@
                         "document_id": "8571a8d5-2242-4721-8b4b-c166d242154f",
                         "title": "today was good",
                         "content": "we had pizza",
+                        "biography": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "0ebe257e-5825-4663-865b-9cf6201b4fdc",
+                        "title": "big nuts",
+                        "content": "buts big",
+                        "biography": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "e4a56842-3dbf-4690-a741-84dcdcba9027",
+                        "title": "no",
+                        "content": "no",
                         "biography": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
                         "upload_date": null
                     }
@@ -67,7 +81,7 @@
     "clients": [
         {
             "user_id": "5e5e430c-a7fc-4c1b-9b45-b613f5968eab",
-            "name": "naia",
+            "name": "naiou",
             "role": "client",
             "email": "n@gmail.com",
             "password": "pass",
@@ -80,6 +94,14 @@
             "email": "he@he.co",
             "password": "pass",
             "company_name": "hsbc"
+        },
+        {
+            "user_id": "1217f8fe-7ac1-4bda-ab65-7b5a2cc41459",
+            "name": "l",
+            "role": "client",
+            "email": "l",
+            "password": "l",
+            "company_name": "l"
         }
     ]
 }
