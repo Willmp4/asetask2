@@ -59,8 +59,12 @@ def admin_menu(command_issuer, user):
                 print(f"Description: {bio['description']}")
                 # Add more details as needed
         elif choice == '2':  # New option for editing any document
+            employee_biographies = command_issuer.issue_command('access_all_biographies', actions=actions)
+            for name, bio in employee_biographies:
+                print(f"\nBiography of {name}")
+                print(f"Description: {bio['description']}")
             employee_name = input("Enter employee's name to list their documents: ")
-            actions = AdminActions(command_issuer.user_manager, user, command_issuer.kms)
+
             documents = command_issuer.issue_command('list_documents_for_employee', actions=actions, employee_name=employee_name)
 
             if documents:
