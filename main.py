@@ -8,7 +8,7 @@ from actions.ClientActions import ClientActions
 from database.JsonUserDAO import JsonUserDAO
 
 def gather_employee_details(name, email, password):
-    biography_description = input("Enter biography: ")
+    biography_description = input("Enter biography description: ")
     skills = input("Enter skills (comma-separated): ").split(',')
     while True:
         try:

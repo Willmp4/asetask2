@@ -1,56 +1,77 @@
 {
     "employees": [
         {
-            "user_id": "0173bdec-d0ee-4a9a-a060-adb0b167202e",
-            "name": "will",
+            "user_id": "08f36a72-5bc1-41f9-a207-ccdb47182d5f",
+            "name": "william bruckmann",
             "role": "employee",
-            "email": "will@gmail.com",
-            "password": "$2b$12$qxLHrHfKs3ImLJtJo/NzfelnVMnKHDqrnlERGGZlaco0Mrqb7b802",
+            "email": "w.goudie@company.com",
+            "password": "$2b$12$EsOmdpjQGrY2lXqGMLEaW.anh.IerEMyEpjkq6yoClcQuXarmUvRm",
             "biography": {
-                "biography_id": "d9b307b3-f5b8-4df3-a468-4f0a03b242bc",
-                "description": "bass",
-                "employee_id": "0173bdec-d0ee-4a9a-a060-adb0b167202e",
+                "biography_id": "1050e1c9-c0ba-41e9-8378-b0411345f7df",
+                "description": "this is about me",
+                "employee_id": "08f36a72-5bc1-41f9-a207-ccdb47182d5f",
                 "start_date": null,
                 "end_date": null,
                 "documents": [
                     {
-                        "document_id": "6e051cf7-acb8-4941-968c-430df39b041d",
-                        "title": "my day",
-                        "content": "mt day was good",
-                        "biography": "d9b307b3-f5b8-4df3-a468-4f0a03b242bc",
+                        "document_id": "1bd787a7-9a6d-48a0-8458-ab281c668dea",
+                        "title": "this is my day",
+                        "content": "what a good day I have had",
+                        "biography": "1050e1c9-c0ba-41e9-8378-b0411345f7df",
                         "upload_date": null
                     },
                     {
-                        "document_id": "1cd75dd7-1071-448d-9598-23d5ed8631cb",
-                        "title": "test",
-                        "content": "this is a test",
-                        "biography": "d9b307b3-f5b8-4df3-a468-4f0a03b242bc",
+                        "document_id": "7e08a2d6-030c-4317-aa68-c9d6d684c3be",
+                        "title": "my languages",
+                        "content": "I can code in python, java, JS and in haskell, I also speak french",
+                        "biography": "1050e1c9-c0ba-41e9-8378-b0411345f7df",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "424a1757-0a87-4475-b3ad-a78b977a2875",
+                        "title": "experiance",
+                        "content": "wow I have a lot",
+                        "biography": "1050e1c9-c0ba-41e9-8378-b0411345f7df",
                         "upload_date": null
                     }
                 ]
             },
             "skills": [
-                "goat"
+                "coding",
+                " amazing",
+                " goaty"
             ],
-            "experience": 87
+            "experience": 23
+        },
+        {
+            "user_id": "46666736-8708-435b-be49-571c84d6f12c",
+            "name": "naia foucan",
+            "role": "employee",
+            "email": "naia.foucan@company.com",
+            "password": "$2b$12$mOebr8L089po6QrJLfickOA8qJB/bliHw4q0mX1pscd3sadQ1gL36",
+            "biography": {
+                "biography_id": "2a044383-6f48-4fd3-b7d8-cf9e4803f84c",
+                "description": "this is me",
+                "employee_id": "46666736-8708-435b-be49-571c84d6f12c",
+                "start_date": null,
+                "end_date": null,
+                "documents": []
+            },
+            "skills": [
+                "coding",
+                " bussiness"
+            ],
+            "experience": 12
         }
     ],
     "clients": [
         {
-            "user_id": "bd665a3c-d4dd-44d2-834d-bae3b6b2d759",
-            "name": "will",
+            "user_id": "bd3ef0ef-f4dd-45c9-b5c5-2376ee4ff2ae",
+            "name": "houssain khan",
             "role": "client",
-            "email": "w@i.com",
-            "password": "$2b$12$5bwLYvhZHfe7RK5ewrolAOc/EAkMR0CsLwjbn7w1H4RCH16.wMfOy",
-            "company_name": "pass"
-        },
-        {
-            "user_id": "ba118e52-4387-49c9-8221-69b45537bb63",
-            "name": "will",
-            "role": "client",
-            "email": "w@gmail.com",
-            "password": "$2b$12$wyVuL3EmEKL4uL975EgwtOXrdE5mLJEkqXzsSr1Sjj.5eSv8s7AmW",
-            "company_name": "pass"
+            "email": "h.khan@company.com",
+            "password": "$2b$12$QWPmrtnHlxDU2AF4wT4bc.oxYp9r/j9uaEwIGqk.0hpjnd.wOI9ue",
+            "company_name": "hsbc"
         }
     ]
 }
