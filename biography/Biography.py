@@ -2,7 +2,7 @@
 #This class is used to define the attributes and methods of a biography
 #The biography has a biography id, a description, an employee id, a start date, an end date and a list of documents
 class Biography:
-    def __init__(self, biography_id, name, description, employee_id, start_date, end_date):
+    def __init__(self, biography_id, description, employee_id, start_date, end_date):
         self.biography_id = biography_id
         self.description = description
         self.employee_id = employee_id
