@@ -1,4 +1,6 @@
-from models.Employee import Employee, Client
+from models.Employee import Employee
+from models.Client import Client
+from models.Admin import Admin
 import uuid
 
 class KnowledgeManagementSystem:
@@ -31,6 +33,8 @@ class KnowledgeManagementSystem:
             user = Employee(str(uuid.uuid4()), **kwargs)
         elif user_type == 'client':
             user = Client(str(uuid.uuid4()), **kwargs)
+        elif user_type == 'admin':
+            user = Admin(str(uuid.uuid4()), **kwargs)
         else:
             raise ValueError("Invalid user type")
         self.add_user(user)

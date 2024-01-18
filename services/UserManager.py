@@ -1,5 +1,7 @@
 import json
-from models.Employee import Employee, Client
+from models.Employee import Employee
+from models.Client import Client
+from models.Admin import Admin
 from biography.Biography import Biography
 from document.Document import Document
 
@@ -42,10 +44,15 @@ class UserManager:
         for user_data in data.get('clients', []):
             client = Client(**user_data, password_hashed=True)
             self.users[client.user_id] = client
+        
+        for user_data in data.get('admins', []):
+            admin = Admin(**user_data, password_hashed=True)
+            self.users[admin.user_id] = admin
 
     def save_users(self):
         data = {
             'employees': [user.to_dict() for user in self.users.values() if isinstance(user, Employee)],
-            'clients': [user.to_dict() for user in self.users.values() if isinstance(user, Client)]
+            'clients': [user.to_dict() for user in self.users.values() if isinstance(user, Client)],
+            'admins': [user.to_dict() for user in self.users.values() if isinstance(user, Admin)]
         }
         self.user_dao.save_users(data)

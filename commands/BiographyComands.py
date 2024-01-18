@@ -52,3 +52,32 @@ class UpdateDocumentCommand(Command):
     def execute(self):
         self.actions.edit_document(self.document_id, self.new_title, self.new_content)
 
+class AccessAllBiographiesCommand(Command):
+    def __init__(self, actions):
+        self.actions = actions
+
+    def execute(self):
+        return self.actions.access_all_biographies()
+
+class ListDocumentsForEmployeeCommand(Command):
+    def __init__(self, actions, employee_name):
+        self.actions = actions
+        self.employee_name = employee_name
+
+    def execute(self):
+        return self.actions.list_documents_for_employee(self.employee_name)
+
+class EditAnyDocumentByTitleCommand(Command):
+    def __init__(self, actions, employee_name, doc_title, new_title, new_content):
+        self.actions = actions
+        self.employee_name = employee_name
+        self.doc_title = doc_title
+        self.new_title = new_title
+        self.new_content = new_content
+
+    def execute(self):
+        self.actions.edit_any_document_by_title(self.employee_name, self.doc_title, self.new_title, self.new_content)
+
+
+
+

@@ -15,8 +15,8 @@
                 "documents": [
                     {
                         "document_id": "1bd787a7-9a6d-48a0-8458-ab281c668dea",
-                        "title": "this is my day",
-                        "content": "what a good day I have had",
+                        "title": "lol",
+                        "content": "lol",
                         "biography": "1050e1c9-c0ba-41e9-8378-b0411345f7df",
                         "upload_date": null
                     },
@@ -68,10 +68,19 @@
         {
             "user_id": "bd3ef0ef-f4dd-45c9-b5c5-2376ee4ff2ae",
             "name": "houssain khan",
-            "role": "client",
+            "role": "Client",
             "email": "h.khan@company.com",
             "password": "$2b$12$QWPmrtnHlxDU2AF4wT4bc.oxYp9r/j9uaEwIGqk.0hpjnd.wOI9ue",
             "company_name": "hsbc"
+        }
+    ],
+    "admins": [
+        {
+            "user_id": "6eb3da05-d786-4a46-b736-b4d5677ddd20",
+            "name": "admin",
+            "role": "Admin",
+            "email": "admin@admin.com",
+            "password": "$2b$12$YDk5Aok2Hy4FGMFRCgqO3O8iNdXJpUahN.tPbkIYiUPcsISNGEOty"
         }
     ]
 }
