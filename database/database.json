@@ -1,37 +1,33 @@
 {
     "employees": [
         {
-            "user_id": "e36166fc-fe9d-4496-9907-37df7d1b4277",
+            "user_id": "0173bdec-d0ee-4a9a-a060-adb0b167202e",
             "name": "will",
             "role": "employee",
-            "email": "w@w.com",
-            "password": "$2b$12$IQVSH24KvAff9C55T/EZmuSWd6GIdU2RGr6qxN4pbm9/PQx2SQRP6",
+            "email": "will@gmail.com",
+            "password": "$2b$12$qxLHrHfKs3ImLJtJo/NzfelnVMnKHDqrnlERGGZlaco0Mrqb7b802",
             "biography": {
-                "biography_id": "32313901-c615-46d5-8740-b2240c88e558",
-                "description": "this is me",
-                "employee_id": "e36166fc-fe9d-4496-9907-37df7d1b4277",
+                "biography_id": "d9b307b3-f5b8-4df3-a468-4f0a03b242bc",
+                "description": "bass",
+                "employee_id": "0173bdec-d0ee-4a9a-a060-adb0b167202e",
                 "start_date": null,
                 "end_date": null,
-                "documents": []
-            },
-            "skills": [
-                "goat"
-            ],
-            "experience": 87
-        },
-        {
-            "user_id": "b59332ea-25ad-4e01-b836-92568e641fcb",
-            "name": "will",
-            "role": "employee",
-            "email": "w@w.com",
-            "password": "$2b$12$QMX/pwNpn7xldH44K5s9MOg7fFUn40wATEvt3OQAfzwGT0AOrGLIe",
-            "biography": {
-                "biography_id": "7a9f3ed8-d21a-4602-a131-aa57f86374cb",
-                "description": "wowza",
-                "employee_id": "b59332ea-25ad-4e01-b836-92568e641fcb",
-                "start_date": null,
-                "end_date": null,
-                "documents": []
+                "documents": [
+                    {
+                        "document_id": "6e051cf7-acb8-4941-968c-430df39b041d",
+                        "title": "my day",
+                        "content": "mt day was good",
+                        "biography": "d9b307b3-f5b8-4df3-a468-4f0a03b242bc",
+                        "upload_date": null
+                    },
+                    {
+                        "document_id": "1cd75dd7-1071-448d-9598-23d5ed8631cb",
+                        "title": "test",
+                        "content": "this is a test",
+                        "biography": "d9b307b3-f5b8-4df3-a468-4f0a03b242bc",
+                        "upload_date": null
+                    }
+                ]
             },
             "skills": [
                 "goat"
@@ -41,12 +37,12 @@
     ],
     "clients": [
         {
-            "user_id": "251d340e-ab43-4db9-b51c-3bf165ce3807",
+            "user_id": "bd665a3c-d4dd-44d2-834d-bae3b6b2d759",
             "name": "will",
             "role": "client",
-            "email": "w@gmail.com",
-            "password": "$2b$12$ZRlLdw5qLZ2BR895PJuj4eoaO.eUdqMKQzL7nSCAn4XgsyDRNFzZC",
-            "company_name": "yes"
+            "email": "w@i.com",
+            "password": "$2b$12$5bwLYvhZHfe7RK5ewrolAOc/EAkMR0CsLwjbn7w1H4RCH16.wMfOy",
+            "company_name": "pass"
         }
     ]
 }
