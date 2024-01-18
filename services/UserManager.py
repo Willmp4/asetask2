@@ -3,9 +3,10 @@ from models.Employee import Employee, Client
 from biography.Biography import Biography
 from document.Document import Document
 
+
 class UserManager:
-    def __init__(self, filename='database/database.json'):
-        self.filename = filename
+    def __init__(self, user_dao):
+        self.user_dao = user_dao
         self.users = {}
         self.load_users()
 
@@ -26,31 +27,25 @@ class UserManager:
         return None
 
     def load_users(self):
-        try:
-            with open(self.filename, 'r') as file:
-                data = json.load(file)
-                for user_data in data.get('employees', []):
-                    biography_data = user_data.pop('biography', None)
-                    biography = None
-                    if biography_data:
+        data = self.user_dao.load_users()
+        for user_data in data.get('employees', []):
+            biography_data = user_data.pop('biography', None)
+            biography = None
+            if biography_data:
+                documents = [Document(**doc) for doc in biography_data.pop('documents', [])]
+                biography = Biography(**biography_data)
+                biography.documents = documents
 
-                        documents = [Document(**doc) for doc in biography_data.pop('documents', [])]
-                        biography = Biography(**biography_data)
-                        biography.documents = documents  # Assign the documents to the biography
+            employee = Employee(biography_description=biography.description ,biography=biography, **user_data,  password_hashed=True)
+            self.users[employee.user_id] = employee
 
-                    # Pass the loaded biography to the Employee constructor
-                    employee = Employee(biography_description=biography.description ,biography=biography, **user_data)
-                    self.add_user(employee)
-
-                for user_data in data.get('clients', []):
-                    self.add_user(Client(**user_data))
-        except FileNotFoundError:
-            pass
+        for user_data in data.get('clients', []):
+            client = Client(**user_data, password_hashed=True)
+            self.users[client.user_id] = client
 
     def save_users(self):
         data = {
             'employees': [user.to_dict() for user in self.users.values() if isinstance(user, Employee)],
             'clients': [user.to_dict() for user in self.users.values() if isinstance(user, Client)]
         }
-        with open(self.filename, 'w') as file:
-            json.dump(data, file, indent=4)
+        self.user_dao.save_users(data)

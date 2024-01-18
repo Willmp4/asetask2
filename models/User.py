@@ -3,12 +3,15 @@ import bcrypt
 import re
 
 class User:
-    def __init__(self, user_id, name, role, email, password):
+    def __init__(self, user_id, name, role, email, password, password_hashed=False):
         self.user_id = user_id
         self.name = name
         self.role = role
         self.email = email
-        self.password = password
+        if password_hashed:
+            self.password = password
+        else:
+            self.set_password(password)
 
     def validate_email(self, email):
         email_regex = r"[^@]+@[^@]+\.[^@]+"
@@ -35,6 +38,7 @@ class User:
         self.password = hashed.decode('utf-8')
 
     def check_password(self, password):
+
         # Convert the stored password back to bytes for comparison
         stored_password = self.password.encode('utf-8')
         return bcrypt.checkpw(password.encode('utf-8'), stored_password)

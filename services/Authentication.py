@@ -6,6 +6,7 @@ class Authentication:
     def verify_login(self, email, password):
         user = self.user_manager.find_user_by_email(email)
         if user and user.check_password(password):
+            print("Login successful")
             return user
         return None
     
