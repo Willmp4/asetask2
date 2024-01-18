@@ -1,82 +1,76 @@
 {
     "employees": [
         {
-            "user_id": "e009c1a9-5c86-4041-aff7-a2d22bf8fdc2",
-            "name": "bill",
+            "user_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
+            "name": "william",
             "role": "employee",
-            "email": "b@gmail.com",
+            "email": "w@gmail.com",
             "password": "pass",
             "biography": {
-                "biography_id": "116f20c2-249f-4ff8-93c5-35449379073f",
+                "biography_id": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
                 "name": "william",
-                "description": "yessir",
-                "employee_id": "e009c1a9-5c86-4041-aff7-a2d22bf8fdc2",
+                "description": "this is me",
+                "employee_id": "bea02180-5eb0-4c5a-9158-8a0b650db22d",
                 "start_date": null,
                 "end_date": null,
                 "documents": [
                     {
-                        "document_id": "103f9fcc-e196-44bb-9009-4282d6c5e3cb",
-                        "title": "Goat",
-                        "content": "bizz goat",
-                        "biography": "116f20c2-249f-4ff8-93c5-35449379073f",
-                        "upload_date": null
-                    },
-                    {
-                        "document_id": "f7a3e7d2-d4d5-44c1-a8b9-490ead83fe87",
-                        "title": "one taps",
-                        "content": "taps one",
-                        "biography": "116f20c2-249f-4ff8-93c5-35449379073f",
-                        "upload_date": null
-                    },
-                    {
-                        "document_id": "2e371bed-ff3a-4bec-8e99-c63b075d6182",
-                        "title": "a",
-                        "content": "a",
-                        "biography": "116f20c2-249f-4ff8-93c5-35449379073f",
-                        "upload_date": null
-                    },
-                    {
-                        "document_id": "d96a7e61-10e3-4d05-815a-f49e2f8689ee",
-                        "title": "b",
-                        "content": "c",
-                        "biography": "116f20c2-249f-4ff8-93c5-35449379073f",
+                        "document_id": "92daa643-5eeb-45e9-a160-90fd23ed64e1",
+                        "title": "my first day",
+                        "content": "yesterday was my first day",
+                        "biography": "781b954f-6592-40f9-822a-e7e3f6d87c7f",
                         "upload_date": null
                     }
                 ]
             },
             "skills": [
-                "goat",
-                "skilled"
-            ],
-            "experience": 99
-        },
-        {
-            "user_id": "73d99fe2-d5ca-4014-baec-8614053002bb",
-            "name": "niai",
-            "role": "employee",
-            "email": "ni@gmail.com",
-            "password": "pass",
-            "biography": {
-                "biography_id": "d845b52c-62c1-49a3-a5c2-45750d337130",
-                "name": "naia",
-                "description": "this is me",
-                "employee_id": "73d99fe2-d5ca-4014-baec-8614053002bb",
-                "start_date": null,
-                "end_date": null,
-                "documents": []
-            },
-            "skills": [
                 "goat"
             ],
-            "experience": 99
+            "experience": 56
+        },
+        {
+            "user_id": "0c3896f3-5635-487c-8dd2-7d6c061a70d0",
+            "name": "me",
+            "role": "employee",
+            "email": "me@gmail.co",
+            "password": "pass",
+            "biography": {
+                "biography_id": "84fd5252-ab8c-472c-9c73-01085d65064e",
+                "name": "m",
+                "description": "this isn't me ",
+                "employee_id": "0c3896f3-5635-487c-8dd2-7d6c061a70d0",
+                "start_date": null,
+                "end_date": null,
+                "documents": [
+                    {
+                        "document_id": "dfcc64f1-d593-4f2e-bdb2-2c6d8a3e7869",
+                        "title": "my last day",
+                        "content": "I don't know when my last day will be",
+                        "biography": "84fd5252-ab8c-472c-9c73-01085d65064e",
+                        "upload_date": null
+                    }
+                ]
+            },
+            "skills": [
+                "bossy"
+            ],
+            "experience": 85
         }
     ],
     "clients": [
         {
-            "user_id": "d16d8367-4ad0-44ae-ad87-0a302b8a4000",
-            "name": "w",
+            "user_id": "5e5e430c-a7fc-4c1b-9b45-b613f5968eab",
+            "name": "naia",
             "role": "client",
-            "email": "w@gmail.com",
+            "email": "n@gmail.com",
+            "password": "pass",
+            "company_name": "lloyds"
+        },
+        {
+            "user_id": "5f20106a-158e-43d8-8fc8-ac6f6d3c546b",
+            "name": "h",
+            "role": "client",
+            "email": "h@gmail.com",
             "password": "pass",
             "company_name": "hsbc"
         }
