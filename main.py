@@ -5,6 +5,7 @@ from commands.Invoker import Invoker
 from CommandIssuer import CommandIssuer  
 from actions.EmployeeActions import EmployeeActions
 from actions.ClientActions import ClientActions
+from database.JsonUserDAO import JsonUserDAO
 
 def gather_employee_details(name, email, password):
     biography_description = input("Enter biography: ")
@@ -135,7 +136,8 @@ def account_management(command_issuer, user):
 
 
 def main():
-    user_manager = UserManager()
+    user_dao = JsonUserDAO('database/database.json')
+    user_manager = UserManager(user_dao)
     kms = KnowledgeManagementSystem("KmsV1", "KMS", user_manager)
     authenticator = Authentication(user_manager)
     invoker = Invoker()
